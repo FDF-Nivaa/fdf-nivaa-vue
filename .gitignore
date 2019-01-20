@@ -82,3 +82,6 @@ dist
 
 # Service worker
 sw.*
+
+# Config
+cockpit-config.json
