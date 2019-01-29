@@ -14,22 +14,17 @@
 </template>
 
 <script>
-  import {cockpit as cockpitConfig} from '~/cockpit-config'
-
   export default {
-    asyncData({ app, error }) {
-      return app.$axios
-        .get(`${cockpitConfig.url}/api/collections/get/repeatedEvents?token=${cockpitConfig.token}`)
-        .then(response => {
-          return {
-            repeatedEvents: response.data.entries
-          }
-        }).catch(() => {
-          error({
-            statusCode: 404,
-            message: 'Ingen arrangementer fundet'
-          })
-        })
-    }
+    computed: {
+      repeatedEvents() {
+        return this.$store.state.repeatedEvents
+      }
+    },
+    mounted() {
+      this.$store.dispatch('clearError')
+    },
+    fetch({ store }) {
+      store.dispatch('fetchRepeatedEvents')
+    },
   }
 </script>

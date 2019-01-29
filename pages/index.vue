@@ -3,7 +3,10 @@
 
 <script>
   export default {
-    components: {}
+    components: {},
+    mounted() {
+      this.$store.dispatch('clearError')
+    },
   }
 </script>
 
