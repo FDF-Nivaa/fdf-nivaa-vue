@@ -2,7 +2,11 @@
   <article>
     <ul>
       <li v-for="event in repeatedEvents">
-        <h3>{{event.title}}</h3>
+        <h3>
+          <nuxt-link :to="'/repeated-events/' + event._id">
+            {{event.title}}
+          </nuxt-link>
+        </h3>
         <div v-html="event.description"></div>
       </li>
     </ul>
@@ -10,22 +14,21 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import {cockpit as cockpitConfig} from '~/cockpit-config'
 
   export default {
-    data() {
-      return {
-        repeatedEvents: []
-      }
-    },
-    asyncData() {
-      return axios
+    asyncData({ app, error }) {
+      return app.$axios
         .get(`${cockpitConfig.url}/api/collections/get/repeatedEvents?token=${cockpitConfig.token}`)
         .then(response => {
           return {
-            repeatedEvents: response.data.entries || []
+            repeatedEvents: response.data.entries
           }
+        }).catch(() => {
+          error({
+            statusCode: 404,
+            message: 'Ingen arrangementer fundet'
+          })
         })
     }
   }
