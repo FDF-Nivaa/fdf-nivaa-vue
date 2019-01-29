@@ -22,7 +22,7 @@
         }).catch(() => {
           error({
             statusCode: 404,
-            message: 'Arrangementet blev ikke fundet 2'
+            message: 'Arrangementet blev ikke fundet'
           })
         })
     }
