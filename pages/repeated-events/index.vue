@@ -17,14 +17,12 @@
   export default {
     computed: {
       repeatedEvents() {
-        return this.$store.state.repeatedEvents
+        return this.$store.state['repeated-events'].list
       }
     },
-    mounted() {
-      this.$store.dispatch('clearError')
-    },
-    fetch({ store }) {
-      store.dispatch('fetchRepeatedEvents')
+    async fetch({ store }) {
+      store.dispatch('clearError')
+      await store.dispatch('repeated-events/fetchAll')
     },
   }
 </script>

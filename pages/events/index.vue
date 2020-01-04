@@ -18,14 +18,12 @@
   export default {
     computed: {
       events() {
-        return this.$store.state.events
+        return this.$store.state.events.list
       }
     },
-    mounted() {
-      this.$store.dispatch('clearError')
-    },
-    fetch({ store }) {
-      store.dispatch('fetchEvents')
+    async fetch({ store }) {
+      store.dispatch('clearError')
+      await store.dispatch('events/fetchAll')
     },
   }
 </script>
