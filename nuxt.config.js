@@ -19,7 +19,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Work+Sans&display=swap' }
     ]
   },
 
@@ -29,9 +29,16 @@ module.exports = {
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
-  css: [],
+   ** Global CSS
+   */
+  css: ['style/base.less'],
+
+  /*
+   ** Style resources to inject into all components
+   */
+  styleResources: {
+    less: ['style/variables.less']
+  },
 
   /*
   ** Plugins to load before mounting the App

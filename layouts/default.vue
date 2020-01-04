@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper">
     <MainNavigation />
-    <main>
+    <main class="content">
       <div
         class="error-message"
         v-if="hasError"
@@ -9,7 +9,11 @@
         <h2 v-if="error.statusCode">Fejl {{error.statusCode}}</h2>
         <p>{{error.message}}</p>
         <p>
-          <button type="button" @click="clearErrorMessage">Luk</button>
+          <button
+            type="button"
+            @click="clearErrorMessage"
+          >Luk
+          </button>
         </p>
       </div>
       <nuxt />
@@ -40,12 +44,26 @@
   }
 </script>
 
-<style lang="less">
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-    margin: 0;
+<style
+  lang="less"
+  scoped
+>
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+
+  .content {
+    width: 100%;
+    max-width: @maxContentWidth;
+    margin: auto;
+    flex-grow: 1;
+
+    p, ul, ol {
+      line-height: 1.4em;
+    }
   }
 
   body {
