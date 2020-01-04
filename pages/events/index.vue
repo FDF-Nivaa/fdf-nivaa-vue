@@ -2,7 +2,11 @@
   <article>
     <ul>
       <li v-for="event in events">
-        <h3>{{event.title}}</h3>
+        <h3>
+          <nuxt-link :to="'/events/' + event._id">
+            {{event.title}}
+          </nuxt-link>
+        </h3>
         <div v-html="event.description"></div>
         <p>
           <nuxt-link :to="'/repeated-events/' + event.repeatedEvent._id">

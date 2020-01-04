@@ -12,6 +12,10 @@ export default class CockpitApi {
     return this.axiosInstance.get(createCollectionUrl(collection), config)
   }
 
+  post(collection, data, config) {
+    return this.axiosInstance.post(createCollectionUrl(collection), data, config)
+  }
+
   get axiosInstance() {
     if (!this.#axiosInstance) {
       this.#axiosInstance = axios.create({
