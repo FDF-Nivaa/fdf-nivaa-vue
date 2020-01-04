@@ -26,6 +26,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "nodemon": "^1.18.9",
+    "vue-feather-icons": "^4.22.0",
     "vue-jest": "^3.0.2"
   }
 }
