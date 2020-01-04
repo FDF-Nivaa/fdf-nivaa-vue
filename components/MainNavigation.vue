@@ -17,30 +17,44 @@
         <nuxt-link
           class="main-navigation-link"
           to="/events"
-        >Aktuelle lejre & arrangementer
+        >
+          <CompassIcon class="main-navigation-link-icon" />
+          <span class="main-navigation-link-text">
+            Aktuelle lejre & arrangementer
+          </span>
         </nuxt-link>
       </li>
-      <li>
+      <li class="main-navigation-list-item">
         <nuxt-link
           class="main-navigation-link"
           to="/repeated-events"
-        >Gentagne lejre & arrangementer
+        >
+          <RepeatIcon class="main-navigation-link-icon" />
+          <span class="main-navigation-link-text">
+           Gentagne lejre & arrangementer
+          </span>
         </nuxt-link>
       </li>
-      <li>
+      <li class="main-navigation-list-item">
         <nuxt-link
           class="main-navigation-link"
           to="/staff"
-        >Ledere & bestyrelse
+        >
+          <UsersIcon class="main-navigation-link-icon" />
+          <span class="main-navigation-link-text">
+            Ledere & bestyrelse
+          </span>
         </nuxt-link>
       </li>
     </ul>
   </nav>
 </template>
 
-<style lang="less">
-  body {
-    padding-top: 5em;
+<script>
+  import {CompassIcon, RepeatIcon, UsersIcon} from 'vue-feather-icons'
+
+  export default {
+    components: { CompassIcon, RepeatIcon, UsersIcon }
   }
   .main-navigation {
     position: fixed;
