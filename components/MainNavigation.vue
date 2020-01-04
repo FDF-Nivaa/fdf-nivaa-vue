@@ -27,6 +27,13 @@
         >Gentagne lejre & arrangementer
         </nuxt-link>
       </li>
+      <li>
+        <nuxt-link
+          class="main-navigation-link"
+          to="/staff"
+        >Ledere & bestyrelse
+        </nuxt-link>
+      </li>
     </ul>
   </nav>
 </template>
