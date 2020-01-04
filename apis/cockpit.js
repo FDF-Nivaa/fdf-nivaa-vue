@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('axios')
 import {cockpit as cockpitConfig} from '~/cockpit-config'
 
 export function createCollectionUrl(collection) {
@@ -16,9 +16,6 @@ export default class CockpitApi {
     if (!this.#axiosInstance) {
       this.#axiosInstance = axios.create({
         baseURL: this.baseUrl,
-        headers: {
-          Cookie: this.cookie,
-        },
       })
     }
 
