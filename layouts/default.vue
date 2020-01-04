@@ -18,15 +18,18 @@
       </div>
       <nuxt />
     </main>
+    <SiteFooter />
   </div>
 </template>
 
 <script>
   import MainNavigation from '~/components/MainNavigation'
+  import SiteFooter from "../components/SiteFooter"
 
   export default {
     components: {
-      MainNavigation
+      MainNavigation,
+      SiteFooter
     },
     computed: {
       hasError() {
@@ -66,9 +69,17 @@
     }
   }
 
-  body {
-    background: #c8d5e7;
-    font-family: Ubuntu, verdana, sans-serif;
+  .page-footer {
+    position: relative;
+    padding: 3rem 3rem 2.5rem;
+
+    @media (max-width: @maxContentWidth) {
+      padding: 2.5rem 2rem 2rem;
+    }
+
+    @media (max-width: 30em) {
+      padding: 2.5rem 1.5rem 2rem;
+    }
   }
 
   .error-message {
