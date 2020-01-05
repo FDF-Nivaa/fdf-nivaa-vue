@@ -86,6 +86,7 @@
     flex-direction: row;
     max-width: @maxContentWidth;
     margin: auto;
+    padding: 0 1.25em;
   }
 
   .main-navigation-list {
