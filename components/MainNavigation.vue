@@ -15,6 +15,17 @@
         <li class="main-navigation-list-item">
           <nuxt-link
             class="main-navigation-link"
+            to="/calendar"
+          >
+            <CalendarIcon class="main-navigation-link-icon" />
+            <span class="main-navigation-link-text">
+            Kalender
+          </span>
+          </nuxt-link>
+        </li>
+        <li class="main-navigation-list-item">
+          <nuxt-link
+            class="main-navigation-link"
             to="/events"
           >
             <CompassIcon class="main-navigation-link-icon" />
@@ -51,10 +62,10 @@
 </template>
 
 <script>
-  import {CompassIcon, RepeatIcon, UsersIcon} from 'vue-feather-icons'
+  import {CalendarIcon, CompassIcon, RepeatIcon, UsersIcon} from 'vue-feather-icons'
 
   export default {
-    components: { CompassIcon, RepeatIcon, UsersIcon }
+    components: { CalendarIcon, CompassIcon, RepeatIcon, UsersIcon }
   }
 </script>
 
