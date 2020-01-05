@@ -62,6 +62,7 @@
     width: 100%;
     max-width: @maxContentWidth;
     margin: auto;
+    padding: 1.3em 1.25em;
     flex-grow: 1;
 
     p, ul, ol {
