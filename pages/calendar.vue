@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import queryString from 'query-string'
+  import googleCalendar from '../apis/google-calendar'
 
   const apiKey = 'AIzaSyDRKB9cLhDuS1A_-grlpoP5CM8z-Nb-lTw'
   const calendarId = 'coufvnfppmc4kptde0q3fc8550@group.calendar.google.com'
@@ -37,34 +37,15 @@
       return { events: [] }
     },
     mounted() {
-      this.$axios
-        .get(this.buildUrl(calendarId))
-        .then(response => {
-          console.log(response)
-          this.events = response.data.items
-        })
+      const startDate = new Date()
+      const endDate = new Date()
+
+      endDate.setFullYear(endDate.getFullYear() + 1)
+      //endDate.setMonth(endDate.getMonth() + 1)
+
+      googleCalendar.getEvents(calendarId, startDate, endDate).then(events => this.events = events)
     },
     methods: {
-      buildUrl(calendarId, options) {
-        const startDate = new Date()
-        const endDate = new Date()
-
-        endDate.setFullYear(endDate.getFullYear() + 1)
-        //endDate.setMonth(endDate.getMonth() + 1)
-
-        const parameters = queryString.stringify({
-          ...options,
-          key: apiKey,
-          orderBy: 'startTime',
-          singleEvents: true,
-          timeMin: startDate.toISOString(),
-          timeMax: endDate.toISOString()
-        })
-
-        return (
-          `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${parameters}`
-        )
-      },
       formatCalendarDateObject(dateObject) {
         if (dateObject.date) {
           return this.formatDateString(dateObject.date)

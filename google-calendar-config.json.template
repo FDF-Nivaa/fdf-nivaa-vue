@@ -1,0 +1,9 @@
+{
+  "calendars": [
+    {
+      "name": "Some display name",
+      "id": "example@group.calendar.google.com"
+    },
+  ],
+  "key": ""
+}
