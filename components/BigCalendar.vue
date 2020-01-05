@@ -1,5 +1,6 @@
 <template>
-  <table>
+  <LoadingAnimation v-if="isLoading" size="large" />
+  <table v-else>
     <thead>
       <tr>
         <th>Event</th>
@@ -26,11 +27,13 @@
 
 <script>
   import CalendarLabel from "./CalendarLabel"
+  import LoadingAnimation from "./LoadingAnimation"
+
   import googleCalendar from "../apis/google-calendar"
 
   export default {
     name: 'BigCalendar',
-    components: { CalendarLabel },
+    components: { CalendarLabel, LoadingAnimation },
     props: {
       calendars: {
         type: Array,
@@ -51,7 +54,7 @@
       }
     },
     data() {
-      return { events: [] }
+      return { events: [], isLoading: true }
     },
     computed: {
       sortedEvents() {
@@ -61,11 +64,17 @@
       }
     },
     mounted() {
-      this.calendars.forEach(calendar => this.addEventsFromCalendar(calendar))
+      Promise.allSettled(
+        this.calendars.map(calendar => {
+          return this.addEventsFromCalendar(calendar)
+        }))
+        .then(() => {
+          this.isLoading = false
+        })
     },
     methods: {
       addEventsFromCalendar(calendar) {
-        googleCalendar.getEvents(
+        return googleCalendar.getEvents(
           calendar.id,
           this.startDate,
           this.endDate
