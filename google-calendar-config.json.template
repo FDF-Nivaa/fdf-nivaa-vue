@@ -2,6 +2,7 @@
   "calendars": [
     {
       "name": "Some display name",
+      "className": "some-class-name",
       "id": "example@group.calendar.google.com"
     },
   ],
