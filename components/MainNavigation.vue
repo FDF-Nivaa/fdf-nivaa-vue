@@ -1,52 +1,52 @@
 <template>
   <nav class="main-navigation">
-    <ul class="main-navigation-list">
-      <li class="main-navigation-list-item">
-        <nuxt-link
-          class="main-navigation-link main-navigation-logo-link"
-          to="/"
+    <div class="main-navigation-inner">
+      <nuxt-link
+        class="main-navigation-logo-link"
+        to="/"
+      >
+        <img
+          alt="FDF Nivå"
+          class="main-navigation-logo"
+          src="/logo.svg"
         >
-          <img
-            alt="FDF Nivå"
-            class="main-navigation-logo"
-            src="/logo.svg"
+      </nuxt-link>
+      <ul class="main-navigation-list">
+        <li class="main-navigation-list-item">
+          <nuxt-link
+            class="main-navigation-link"
+            to="/events"
           >
-        </nuxt-link>
-      </li>
-      <li class="main-navigation-list-item">
-        <nuxt-link
-          class="main-navigation-link"
-          to="/events"
-        >
-          <CompassIcon class="main-navigation-link-icon" />
-          <span class="main-navigation-link-text">
+            <CompassIcon class="main-navigation-link-icon" />
+            <span class="main-navigation-link-text">
             Aktuelle lejre & arrangementer
           </span>
-        </nuxt-link>
-      </li>
-      <li class="main-navigation-list-item">
-        <nuxt-link
-          class="main-navigation-link"
-          to="/repeated-events"
-        >
-          <RepeatIcon class="main-navigation-link-icon" />
-          <span class="main-navigation-link-text">
+          </nuxt-link>
+        </li>
+        <li class="main-navigation-list-item">
+          <nuxt-link
+            class="main-navigation-link"
+            to="/repeated-events"
+          >
+            <RepeatIcon class="main-navigation-link-icon" />
+            <span class="main-navigation-link-text">
            Gentagne lejre & arrangementer
           </span>
-        </nuxt-link>
-      </li>
-      <li class="main-navigation-list-item">
-        <nuxt-link
-          class="main-navigation-link"
-          to="/staff"
-        >
-          <UsersIcon class="main-navigation-link-icon" />
-          <span class="main-navigation-link-text">
+          </nuxt-link>
+        </li>
+        <li class="main-navigation-list-item">
+          <nuxt-link
+            class="main-navigation-link"
+            to="/staff"
+          >
+            <UsersIcon class="main-navigation-link-icon" />
+            <span class="main-navigation-link-text">
             Ledere & bestyrelse
           </span>
-        </nuxt-link>
-      </li>
-    </ul>
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -67,13 +67,19 @@
     top: 0;
     left: 0;
     right: 0;
-    background: @duskBlue;
+    background: white;
+  }
+
+  .main-navigation-inner {
+    display: flex;
+    flex-direction: row;
+    max-width: @maxContentWidth;
+    margin: auto;
   }
 
   .main-navigation-list {
     display: flex;
     flex-direction: row;
-    max-width: 50em;
     margin: 0 auto;
     list-style: none;
     align-items: stretch;
@@ -86,33 +92,53 @@
   }
 
   .main-navigation-link {
-    vertical-align: middle;
+    --underline-scale: 0;
+
+    position: relative;
     display: flex;
-    color: white;
-    padding: 1em 1.5em;
+    vertical-align: middle;
+    padding: 1em .5em;
     text-decoration: none;
     margin: 0;
     flex-direction: row;
     align-items: center;
 
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      left: 25%;
+      bottom: 1em;
+      width: 50%;
+      border-top: 0.125em solid @duskBlue;
+      transition: all 0.2s ease-out;
+      margin: 0 -0.25em;
+      transform: scaleX(var(--underline-scale));
+    }
+
+    &.nuxt-link-exact-active {
+      --underline-scale: 1;
+    }
+
     @media (hover: hover) {
       &:hover {
-        background: @nightBlue;
+        --underline-scale: 0.5;
       }
     }
   }
 
   .main-navigation-link-icon {
     display: block;
-    font-size: 2.5em;
+    font-size: 1.125em;
     width: 1em;
     height: 1em;
   }
+
   .main-navigation-link-text {
     display: block;
-    margin-left: 1em;
+    margin-left: .5em;
+    font-size: .8125em;
   }
-
 
   .main-navigation-logo-link {
     padding: 0;
