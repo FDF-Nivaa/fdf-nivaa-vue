@@ -95,6 +95,10 @@
     &.seniorer h3 {
       background: @seniorerColor;
     }
+
+    .loading-animation {
+      margin: .687em auto;
+    }
   }
 
   h3, h4 {
