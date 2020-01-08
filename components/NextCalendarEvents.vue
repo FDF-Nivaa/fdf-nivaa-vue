@@ -1,13 +1,11 @@
 <template>
-  <aside class="next-calendar-events">
-    <ul class="next-calendar-events-list">
-      <NextCalendarEvent
-        v-for="calendar in calendars"
-        :calendar="calendar"
-        :key="calendar.id"
-      />
-    </ul>
-  </aside>
+  <ul class="next-calendar-events">
+    <NextCalendarEvent
+      v-for="calendar in calendars"
+      :calendar="calendar"
+      :key="calendar.id"
+    />
+  </ul>
 </template>
 <script>
   import NextCalendarEvent from "./NextCalendarEvent"
@@ -22,12 +20,15 @@
   }
 </script>
 
-<style lang="less" scoped>
-.next-calendar-events-list {
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: repeat(3, minmax(5em, 1fr));
-  list-style: none;
-  padding: 0;
-}
+<style
+  lang="less"
+  scoped
+>
+  .next-calendar-events {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(3, minmax(5em, 1fr));
+    list-style: none;
+    padding: 0;
+  }
 </style>
