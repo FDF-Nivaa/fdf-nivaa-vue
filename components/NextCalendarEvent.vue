@@ -65,16 +65,59 @@
   scoped
 >
   .next-calendar-event {
-    box-shadow: 0 .1em .5em rgba(0, 0, 0, .1);
-    padding: 1em 1.25em;
-    background: rgba(255, 255, 255, .5);
-    border-radius: .2rem;
+    position: relative;
     margin: 0;
+    padding: .5em .55em 1.75em;
+    border-radius: .3rem;
+    background: rgba(255, 255, 255, .5);
+    box-shadow: 0 .25em .5em rgba(0, 0, 0, .1);
+
+    &.faelles h3 {
+      background: @nightBlue;
+    }
+
+    &.tumlinge h3 {
+      background: @tumlingeColor;
+    }
+
+    &.pilte h3 {
+      background: @pilteColor;
+    }
+
+    &.vaebnere h3 {
+      background: @vaebnereColor;
+    }
+
+    &.seniorvaebnere h3 {
+      background: @seniorvaebnereColor;
+    }
+
+    &.seniorer h3 {
+      background: @seniorerColor;
+    }
   }
 
   h3, h4 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: .5em;
+    font-size: .75em;
+    color: white;
+    background: @duskBlue;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+
+  p {
+    font-size: .75em;
+    margin: .5em 0;
   }
 </style>
