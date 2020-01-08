@@ -1,6 +1,14 @@
 <template>
   <footer class="page-footer">
     <div class="footer-inner">
+      <div class="footer-content">
+        <h2>Kom og vær med</h2>
+        <p>
+          Vi mødes hver tirsdag aften.
+          <!-- TODO Make link work -->
+          <nuxt-link to="/groups">Se mødetider for aldersgrupperne</nuxt-link>.
+        </p>
+      </div>
       <div class="some-links">
         <h2>Sociale medier</h2>
         <ul class="some-links-list">
@@ -58,6 +66,8 @@
     margin: auto;
     max-width: @maxContentWidth;
     font-size: 0.8em;
+    display: flex;
+    justify-content: space-between;
   }
 
   .some-links {
