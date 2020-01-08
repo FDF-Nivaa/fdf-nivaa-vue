@@ -34,6 +34,24 @@ export function getEvents(calendarId, startDate, endDate, limit) {
 }
 
 /**
+ * Converts a Google Calendar date object to a JS Date instance.
+ * @param {Object<string, string>} dateObject
+ * @return {Date}
+ */
+export function googleCalendarDateObjectToDate(dateObject) {
+  return new Date(dateObject.date || dateObject.dateTime)
+}
+
+/**
+ * Returns true if the given Google Calendar date object contains time of day.
+ * @param {Object<string, string>} dateObject
+ * @return {boolean}
+ */
+export function googleCalendarDateObjectContainsTime(dateObject) {
+  return !!dateObject.dateTime
+}
+
+/**
  * Builds and returns a API URL for Google Calendar following the spec described here:
  * https://developers.google.com/calendar/v3/reference/events/list#examples
  *
