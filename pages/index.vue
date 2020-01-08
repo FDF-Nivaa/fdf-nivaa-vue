@@ -1,5 +1,6 @@
 <template>
   <article>
+    <NextCalendarEvents />
     <h1>Velkommen til FDF Nivå</h1>
     <p>FDF er en masse sjov og ballade: Bål, udfordring, fantasi, løb, leg, fællesskab, ildaktiviter, overskridelse af
       grænser, weekendture og gode kammerater er præcis hvad FDF handler om!</p>
@@ -12,8 +13,11 @@
 </template>
 
 <script>
+  import NextCalendarEvents from "../components/NextCalendarEvents"
+
   export default {
     name: 'index',
+    components: { NextCalendarEvents },
     mounted() {
       this.$store.dispatch('clearError')
     },
