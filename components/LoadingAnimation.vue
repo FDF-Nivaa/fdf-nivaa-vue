@@ -1,8 +1,6 @@
 <template>
   <span class="loading-animation" :class="`${variant}-variant ${size}`">
-    <LogoOutline class="dot dot1" />
-    <LogoOutline class="dot dot2" />
-    <LogoOutline class="dot dot3" />
+    <LogoOutline />
   </span>
 </template>
 
@@ -61,29 +59,21 @@
     }
   }
 
-  .dot {
+  .logo-outline {
     display: block;
     width: .75em;
     height: .75em;
-    animation: animation 1.4s infinite ease-in-out both;
+    animation: pulse 1s infinite ease-in-out alternate;
   }
 
-  .dot1 {
-    animation-delay: -0.32s;
-  }
-
-  .dot2 {
-    animation-delay: -0.16s;
-  }
-
-  @keyframes animation {
-    0%, 80%, 100% {
+  @keyframes pulse {
+    0% {
       transform: scale(.7);
-      opacity: 0;
+      opacity: .4;
     }
-    40% {
+    100% {
       transform: scale(1);
-      opacity: 1;
+      opacity: .8;
     }
   }
 </style>
