@@ -1,5 +1,8 @@
 <template>
-  <LoadingAnimation v-if="isLoading" size="large" />
+  <LoadingAnimation
+    v-if="isLoading"
+    size="large"
+  />
   <table v-else>
     <thead>
       <tr>
@@ -29,7 +32,7 @@
   import CalendarLabel from "./CalendarLabel"
   import LoadingAnimation from "./LoadingAnimation"
 
-  import googleCalendar from "../apis/google-calendar"
+  import {getEvents, calendars} from "../apis/google-calendar"
 
   export default {
     name: 'BigCalendar',
@@ -74,7 +77,7 @@
     },
     methods: {
       addEventsFromCalendar(calendar) {
-        return googleCalendar.getEvents(
+        return getEvents(
           calendar.id,
           this.startDate,
           this.endDate

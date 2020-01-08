@@ -4,9 +4,9 @@ import axios from 'axios'
 import config from '../google-calendar-config'
 
 const apiKey = config.key
-const calendars = config.calendars
+export const calendars = config.calendars
 
-function getEvents(calendarId, startDate, endDate, limit) {
+export function getEvents(calendarId, startDate, endDate, limit) {
   const options = {
     orderBy: 'startTime',
     singleEvents: true,
@@ -50,8 +50,4 @@ function buildApiUrl(calendarId, options) {
   return (
     `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${parameters}`
   )
-}
-
-export default {
-  getEvents, calendars
 }
