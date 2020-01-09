@@ -70,19 +70,6 @@
     }
   }
 
-  .page-footer {
-    position: relative;
-    padding: 3rem 3rem 2.5rem;
-
-    @media (max-width: @maxContentWidth) {
-      padding: 2.5rem 2rem 2rem;
-    }
-
-    @media (max-width: 30em) {
-      padding: 2.5rem 1.5rem 2rem;
-    }
-  }
-
   .error-message {
     padding: 1.5em;
     background: rgba(190, 0, 0, 0.35);
