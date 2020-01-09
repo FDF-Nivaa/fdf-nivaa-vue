@@ -67,10 +67,11 @@
   .next-calendar-event {
     position: relative;
     margin: 0;
-    padding: .5em .55em 1.75em;
-    border-radius: .3rem;
-    background: rgba(255, 255, 255, .5);
-    box-shadow: 0 .25em .5em rgba(0, 0, 0, .1);
+    padding: .75em .8em 2.25em;
+    border-radius: @defaultBorderRadius;
+    background: white;
+    box-shadow: @defaultBoxShadow;
+    text-align: center;
 
     &.faelles h3 {
       background: @nightBlue;
@@ -116,8 +117,8 @@
     font-size: .75em;
     color: white;
     background: @duskBlue;
-    border-bottom-left-radius: .3rem;
-    border-bottom-right-radius: .3rem;
+    border-bottom-left-radius: @defaultBorderRadius;
+    border-bottom-right-radius: @defaultBorderRadius;
   }
 
   p {
