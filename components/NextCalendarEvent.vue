@@ -74,27 +74,27 @@
     text-align: center;
 
     &.faelles h3 {
-      background: @nightBlue;
+      background-color: @nightBlue;
     }
 
     &.tumlinge h3 {
-      background: @tumlingeColor;
+      background-color: @tumlingeColor;
     }
 
     &.pilte h3 {
-      background: @pilteColor;
+      background-color: @pilteColor;
     }
 
     &.vaebnere h3 {
-      background: @vaebnereColor;
+      background-color: @vaebnereColor;
     }
 
     &.seniorvaebnere h3 {
-      background: @seniorvaebnereColor;
+      background-color: @seniorvaebnereColor;
     }
 
     &.seniorer h3 {
-      background: @seniorerColor;
+      background-color: @seniorerColor;
     }
 
     .loading-animation {
@@ -116,7 +116,7 @@
     padding: .5em;
     font-size: .75em;
     color: white;
-    background: @duskBlue;
+    background: @duskBlue linear-gradient(-45deg, @duskBlue -150%, transparent);
     border-bottom-left-radius: @defaultBorderRadius;
     border-bottom-right-radius: @defaultBorderRadius;
   }
