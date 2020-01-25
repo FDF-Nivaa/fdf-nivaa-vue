@@ -18,7 +18,7 @@
 
 <script>
   export default {
-    name: 'posts/index',
+    name: 'posts.index',
     computed: {
       posts() {
         return this.$store.state.posts.list
