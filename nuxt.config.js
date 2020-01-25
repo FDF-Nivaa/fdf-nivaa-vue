@@ -31,13 +31,13 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['style/base.less'],
+  css: ['style/base.scss'],
 
   /*
    ** Style resources to inject into all components
    */
   styleResources: {
-    less: ['style/variables.less']
+    scss: ['style/variables.scss']
   },
 
   /*

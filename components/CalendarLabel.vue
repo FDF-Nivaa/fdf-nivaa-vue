@@ -31,13 +31,13 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   .calendar-label {
-    --calendar-color: @nightBlue;
+    --calendar-color: #{$nightBlue};
 
-    background: var(--calendar-color, @nightBlue);
+    background: var(--calendar-color, $nightBlue);
     color: white;
     border-radius: .2rem;
     padding: .25em .5em;

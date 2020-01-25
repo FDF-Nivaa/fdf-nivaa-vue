@@ -73,7 +73,7 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   .main-navigation {
@@ -87,7 +87,7 @@
   .main-navigation-inner {
     display: flex;
     flex-direction: row;
-    max-width: @maxContentWidth;
+    max-width: $maxContentWidth;
     margin: auto;
     padding: 0 1.25em;
   }
@@ -125,7 +125,7 @@
       left: 25%;
       bottom: 1em;
       width: 50%;
-      border-top: 0.125em solid @duskBlue;
+      border-top: 0.125em solid $duskBlue;
       transition: all 0.2s ease-out;
       margin: 0 -0.25em;
       transform: scaleX(var(--underline-scale));

@@ -77,14 +77,14 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   .site-footer {
     position: relative;
     padding: 3rem 2.5rem 2.5rem;
-    color: @backgroundColor;
-    background: @nightBlue;
+    color: $backgroundColor;
+    background: $nightBlue;
 
     h2,
     a {
@@ -95,7 +95,7 @@
       font-size: 1.2em;
     }
 
-    @media (max-width: @maxContentWidth) {
+    @media (max-width: $maxContentWidth) {
       padding: 2.5rem 1.5rem 2rem;
     }
 
@@ -106,7 +106,7 @@
 
   .footer-inner {
     margin: auto;
-    max-width: @maxContentWidth;
+    max-width: $maxContentWidth;
     font-size: 0.8em;
     display: flex;
     justify-content: space-between;

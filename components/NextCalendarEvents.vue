@@ -21,7 +21,7 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   .next-calendar-events {

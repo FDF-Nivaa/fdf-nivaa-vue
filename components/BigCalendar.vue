@@ -130,7 +130,7 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   table {
@@ -140,7 +140,7 @@
   }
 
   tbody tr:nth-child(odd) {
-    background: @backgroundColorSlightContrast;
+    background: $backgroundColorSlightContrast;
   }
 
   th, td {

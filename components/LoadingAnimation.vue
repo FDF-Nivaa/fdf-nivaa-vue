@@ -30,13 +30,13 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   .loading-animation {
     width: 3em;
     justify-content: space-around;
-    color: @duskBlue;
+    color: $duskBlue;
 
     &.block-variant {
       margin: 2em auto;

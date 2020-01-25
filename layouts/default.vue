@@ -48,7 +48,7 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   .page-wrapper {
@@ -60,7 +60,7 @@
 
   .content {
     width: 100%;
-    max-width: @maxContentWidth;
+    max-width: $maxContentWidth;
     margin: auto;
     padding: 1.3em 1.25em;
     flex-grow: 1;

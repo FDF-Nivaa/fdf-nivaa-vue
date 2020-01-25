@@ -79,18 +79,18 @@
 </script>
 
 <style
-  lang="less"
+  lang="scss"
   scoped
 >
   .next-calendar-event {
-    --calendar-color: @nightBlue;
+    --calendar-color: #{$nightBlue};
 
     position: relative;
     margin: 0;
     padding: .75em .8em 2.25em;
-    border-radius: @defaultBorderRadius;
+    border-radius: $defaultBorderRadius;
     background: white;
-    box-shadow: @defaultBoxShadow;
+    box-shadow: $defaultBoxShadow;
     text-align: center;
 
     .loading-animation {
@@ -113,9 +113,9 @@
     padding: .5em;
     font-size: .75em;
     color: white;
-    background: var(--calendar-color, @nightBlue) linear-gradient(-45deg, @duskBlue -150%, transparent);
-    border-bottom-left-radius: @defaultBorderRadius;
-    border-bottom-right-radius: @defaultBorderRadius;
+    background: var(--calendar-color, $nightBlue) linear-gradient(-45deg, $duskBlue -150%, transparent);
+    border-bottom-left-radius: $defaultBorderRadius;
+    border-bottom-right-radius: $defaultBorderRadius;
     transition: background-color 1s ease-out;
   }
 

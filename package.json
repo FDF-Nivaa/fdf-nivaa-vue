@@ -25,10 +25,10 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "jest": "^24.9.0",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.18.9",
     "query-string": "^6.9.0",
+    "sass-loader": "^8.0.2",
     "vue-feather-icons": "^4.22.0",
     "vue-jest": "^3.0.2"
   }

@@ -1,6 +1,6 @@
 
 html {
-  font-family: @mainFont;
+  font-family: $mainFont;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  background: @backgroundColor;
+  background: $backgroundColor;
   hyphens: manual;
 
   @media (min-width: 80rem) {
@@ -30,8 +30,8 @@ h3,
 h4,
 h5 {
   font-weight: 600;
-  font-family: @headFont;
-  color: @duskBlue;
+  font-family: $headFont;
+  color: $duskBlue;
 }
 
 h1 {
@@ -61,7 +61,7 @@ li {
 }
 
 a {
-  color: @nightBlue;
+  color: $nightBlue;
 }
 
 button {
