@@ -67,6 +67,8 @@
       }
     },
     mounted() {
+      this.$store.dispatch('age-groups/fetchAllOnce')
+
       Promise.allSettled(
         this.calendars.map(calendar => {
           return this.addEventsFromCalendar(calendar)

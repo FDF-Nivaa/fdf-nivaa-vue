@@ -2,6 +2,7 @@
   <span
     class="calendar-label"
     :class="calendar.className"
+    :style="{'--calendar-color': ageGroup ? ageGroup.color : null}"
   >{{calendar.name}}</span>
 </template>
 
@@ -13,8 +14,17 @@
         type: Object,
         required: true,
         validator(calendar) {
-          return calendar.className && calendar.name
+          return calendar.name
         }
+      }
+    },
+    computed: {
+      ageGroup() {
+        if (this.calendar.ageGroupId) {
+          return this.$store.getters['age-groups/getById'](this.calendar.ageGroupId)
+        }
+
+        return null
       }
     }
   }
@@ -25,30 +35,12 @@
   scoped
 >
   .calendar-label {
-    background: @duskBlue;
+    --calendar-color: @nightBlue;
+
+    background: var(--calendar-color, @nightBlue);
     color: white;
     border-radius: .2rem;
     padding: .25em .5em;
     font-size: .75em;
-
-    &.tumlinge {
-      background: @tumlingeColor;
-    }
-
-    &.pilte {
-      background: @pilteColor;
-    }
-
-    &.vaebnere {
-      background: @vaebnereColor;
-    }
-
-    &.seniorvaebnere {
-      background: @seniorvaebnereColor;
-    }
-
-    &.seniorer {
-      background: @seniorerColor;
-    }
   }
 </style>
