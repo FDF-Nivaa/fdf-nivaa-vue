@@ -5,7 +5,7 @@ const cockpitApi = new CockpitApi()
 export function createStore(internalName, publicName, publicNamePlural) {
   return {
     state() {
-      return { list: [] }
+      return { list: [], allFetchedOnce: false }
     },
     getters: {
       getById: state => id => {
@@ -13,6 +13,9 @@ export function createStore(internalName, publicName, publicNamePlural) {
       }
     },
     mutations: {
+      allFetchedOnce(state) {
+        state.allFetchedOnce = true
+      },
       setList(state, list) {
         state.list = list
       },
@@ -45,10 +48,16 @@ export function createStore(internalName, publicName, publicNamePlural) {
             }, { root: true })
           })
       },
+      async fetchAllOnce({ dispatch, state }) {
+        if (!state.allFetchedOnce) {
+          dispatch('fetchAll')
+        }
+      },
       async fetchAll({ commit }) {
         await cockpitApi.get(internalName)
           .then(response => {
             if (response.status === 200) {
+              commit('allFetchedOnce')
               commit('setList', response.data.entries)
             } else {
               commit('setError', {

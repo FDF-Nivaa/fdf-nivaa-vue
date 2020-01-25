@@ -2,12 +2,22 @@
   <li
     class="next-calendar-event"
     :class="calendar.className"
+    :style="{'--calendar-color': ageGroup ? ageGroup.color : null}"
   >
-    <h3>{{calendar.name}}</h3>
+    <h3 class="calendar-name">
+      {{calendar.name}}
+      <br>
+      <template v-if="isLoading && !ageGroup">
+        -
+      </template>
+      <template v-else>
+        {{ageGroup ? ageGroup.age : 'Alle aldre'}}
+      </template>
+    </h3>
     <LoadingAnimation v-if="isLoading" />
     <template v-else>
-      <h4>{{event.summary}}</h4>
-      <p>{{formatDate(event.parsedDates.startDate, event.parsedDates.displayTimeOfDay)}} -
+      <h4 class="event-name">{{event.summary}}</h4>
+      <p class="event-date">{{formatDate(event.parsedDates.startDate, event.parsedDates.displayTimeOfDay)}} -
         <br>{{formatDate(event.parsedDates.endDate, event.parsedDates.displayTimeOfDay)}}</p>
     </template>
   </li>
@@ -43,6 +53,13 @@
       },
       isLoading() {
         return this.$store.getters['calendars/isCalendarLoading'](this.calendar.id) || !this.event
+      },
+      ageGroup() {
+        if (this.calendar.ageGroupId) {
+          return this.$store.getters['age-groups/getById'](this.calendar.ageGroupId)
+        }
+
+        return null
       }
     },
     methods: { formatDate },
@@ -56,6 +73,7 @@
           limit: 1
         }
       )
+      this.$store.dispatch('age-groups/fetchAllOnce')
     }
   }
 </script>
@@ -65,6 +83,8 @@
   scoped
 >
   .next-calendar-event {
+    --calendar-color: @nightBlue;
+
     position: relative;
     margin: 0;
     padding: .75em .8em 2.25em;
@@ -73,42 +93,19 @@
     box-shadow: @defaultBoxShadow;
     text-align: center;
 
-    &.faelles h3 {
-      background-color: @nightBlue;
-    }
-
-    &.tumlinge h3 {
-      background-color: @tumlingeColor;
-    }
-
-    &.pilte h3 {
-      background-color: @pilteColor;
-    }
-
-    &.vaebnere h3 {
-      background-color: @vaebnereColor;
-    }
-
-    &.seniorvaebnere h3 {
-      background-color: @seniorvaebnereColor;
-    }
-
-    &.seniorer h3 {
-      background-color: @seniorerColor;
-    }
-
     .loading-animation {
-      margin: .687em auto;
+      margin: 1.687em auto;
     }
   }
 
-  h3, h4 {
+  .calendar-name,
+  .event-name {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  h3 {
+  .calendar-name {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -116,9 +113,10 @@
     padding: .5em;
     font-size: .75em;
     color: white;
-    background: @duskBlue linear-gradient(-45deg, @duskBlue -150%, transparent);
+    background: var(--calendar-color, @nightBlue) linear-gradient(-45deg, @duskBlue -150%, transparent);
     border-bottom-left-radius: @defaultBorderRadius;
     border-bottom-right-radius: @defaultBorderRadius;
+    transition: background-color 1s ease-out;
   }
 
   p {
