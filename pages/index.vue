@@ -11,6 +11,7 @@
     <aside>
       <h1>Det skal vi næste gang</h1>
       <NextCalendarEvents />
+      <p><nuxt-link to="/calendar">Se mere i kalenderen</nuxt-link></p>
     </aside>
   </article>
 </template>
