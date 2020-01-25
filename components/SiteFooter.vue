@@ -12,14 +12,20 @@
 
       </div>
       <div class="footer-content">
+        <h2>Kontakt</h2>
+        <p><a :href="`mailto:${config.email}`">{{config.email}}</a></p>
+      </div>
+      <div class="footer-content">
         <h2>Adresse</h2>
-        <p>
-          <a
-            href="https://www.google.dk/maps/dir/''/Lerhytten,+Niv%C3%A5vej+2,+2990+Niv%C3%A5/@55.9356791,12.4392635,12z/">Lerhytten
-            <br>
-            Nivåvej 2
-            <br>
-            2990 Nivå</a></p>
+        <p><a
+          :href="addressLink"
+        >{{config.address.name}}
+          <br>
+          {{config.address.street}} {{config.address.streetNumber}}
+          <br>
+          {{config.address.zipCode}}
+          {{config.address.city}}</a>
+        </p>
       </div>
       <div class="some-links">
         <h2>Sociale medier</h2>
@@ -60,6 +66,13 @@
     components: { FacebookIcon, InstagramIcon },
     data() {
       return { config }
+    },
+    computed: {
+      addressLink() {
+        return (
+          `https://www.google.dk/maps/dir/''/${config.address.name},+${config.address.street}+${config.address.streetNumber},+${config.address.zipCode}+${config.address.city}`
+        )
+      }
     }
   }
 </script>
