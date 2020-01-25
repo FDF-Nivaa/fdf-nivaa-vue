@@ -63,7 +63,7 @@
           >
             <UsersIcon class="main-navigation-link-icon" />
             <span class="main-navigation-link-text">
-            Ledere & bestyrelse
+            Mød lederne
           </span>
           </nuxt-link>
         </li>

@@ -1,5 +1,6 @@
 <template>
   <article>
+    <h1>Mød lederne</h1>
     <ul>
       <li v-for="person in staff">
         <h3>
