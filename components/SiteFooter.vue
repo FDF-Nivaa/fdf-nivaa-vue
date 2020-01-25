@@ -6,8 +6,7 @@
         <p>
           Vi mødes hver tirsdag aften.
           <br>
-          <!-- TODO Make link work -->
-          <nuxt-link to="/groups">Se mødetider for aldersgrupperne</nuxt-link>
+          <nuxt-link to="/age-groups">Se mødetider for aldersgrupperne</nuxt-link>
         </p>
 
       </div>

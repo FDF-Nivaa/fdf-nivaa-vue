@@ -12,59 +12,15 @@
         >
       </nuxt-link>
       <ul class="main-navigation-list">
-        <li class="main-navigation-list-item">
+        <li class="main-navigation-list-item" v-for="menuItem in menuItems" :key="menuItem.url">
           <nuxt-link
             class="main-navigation-link"
-            to="/posts"
+            :to="menuItem.url"
           >
-            <MessageSquareIcon class="main-navigation-link-icon" />
+            <component :is="menuItem.icon"/>
             <span class="main-navigation-link-text">
-              Opslag
+              {{menuItem.title}}
             </span>
-          </nuxt-link>
-        </li>
-        <li class="main-navigation-list-item">
-          <nuxt-link
-            class="main-navigation-link"
-            to="/calendar"
-          >
-            <CalendarIcon class="main-navigation-link-icon" />
-            <span class="main-navigation-link-text">
-              Kalender
-            </span>
-          </nuxt-link>
-        </li>
-        <li class="main-navigation-list-item">
-          <nuxt-link
-            class="main-navigation-link"
-            to="/events"
-          >
-            <CompassIcon class="main-navigation-link-icon" />
-            <span class="main-navigation-link-text">
-            Aktuelle lejre & arrangementer
-          </span>
-          </nuxt-link>
-        </li>
-        <li class="main-navigation-list-item">
-          <nuxt-link
-            class="main-navigation-link"
-            to="/repeated-events"
-          >
-            <RepeatIcon class="main-navigation-link-icon" />
-            <span class="main-navigation-link-text">
-           Gentagne lejre & arrangementer
-          </span>
-          </nuxt-link>
-        </li>
-        <li class="main-navigation-list-item">
-          <nuxt-link
-            class="main-navigation-link"
-            to="/staff"
-          >
-            <UsersIcon class="main-navigation-link-icon" />
-            <span class="main-navigation-link-text">
-            Mød lederne
-          </span>
           </nuxt-link>
         </li>
       </ul>
@@ -76,7 +32,43 @@
   import {CalendarIcon, CompassIcon, MessageSquareIcon, RepeatIcon, UsersIcon} from 'vue-feather-icons'
 
   export default {
-    components: { CalendarIcon, CompassIcon, MessageSquareIcon, RepeatIcon, UsersIcon }
+    components: { CalendarIcon, CompassIcon, MessageSquareIcon, RepeatIcon, UsersIcon },
+    data() {
+      return {
+        menuItems: [
+          {
+            title: 'Opslag',
+            url: '/posts',
+            icon: MessageSquareIcon
+          },
+          {
+            title: 'Aldersgrupper',
+            url: '/age-groups',
+            icon: UsersIcon
+          },
+          {
+            title: 'Kalender',
+            url: '/calendar',
+            icon: CalendarIcon
+          },
+          {
+            title: 'Aktuelle lejre & arrangementer',
+            url: '/events',
+            icon: CompassIcon
+          },
+          {
+            title: 'Gentagne lejre & arrangementer',
+            url: '/repeated-events',
+            icon: RepeatIcon
+          },
+          {
+            title: 'Mød lederne',
+            url: '/staff',
+            icon: UsersIcon
+          },
+        ]
+      }
+    }
   }
 </script>
 
