@@ -65,7 +65,7 @@
     padding: 1.3em 1.25em;
     flex-grow: 1;
 
-    p, ul, ol {
+    /deep/ p, /deep/ ul, /deep/ ol {
       line-height: 1.4em;
     }
   }
