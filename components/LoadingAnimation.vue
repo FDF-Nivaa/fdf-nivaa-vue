@@ -36,6 +36,8 @@
   .loading-animation {
     width: 3em;
     justify-content: space-around;
+    align-items: center;
+    justify-items: center;
     color: $duskBlue;
 
     &.block-variant {
