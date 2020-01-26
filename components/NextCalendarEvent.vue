@@ -17,14 +17,14 @@
     <LoadingAnimation v-if="isLoading" />
     <template v-else>
       <h4 class="event-name">{{event.summary}}</h4>
-      <p class="event-date">{{formatDate(event.parsedDates.startDate, event.parsedDates.displayTimeOfDay)}} -
-        <br>{{formatDate(event.parsedDates.endDate, event.parsedDates.displayTimeOfDay)}}</p>
+      <p class="event-date">{{formatDateSpan(event.parsedDates.startDate, event.parsedDates.endDate,
+        event.parsedDates.displayTimeOfDay)}}</p>
     </template>
   </li>
 </template>
 
 <script>
-  import {formatDate} from "../utils/format"
+  import {formatDate, formatDateSpan} from "../utils/format"
   import LoadingAnimation from "./LoadingAnimation"
 
   export default {
@@ -62,7 +62,7 @@
         return null
       }
     },
-    methods: { formatDate },
+    methods: { formatDateSpan },
     mounted() {
       this.$store.dispatch(
         'calendars/fetchEvents',
@@ -86,15 +86,18 @@
     --calendar-color: #{$nightBlue};
 
     position: relative;
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    padding: .75em .8em 2.25em;
+    padding: .75em .8em 0;
     border-radius: $defaultBorderRadius;
     background: white;
     box-shadow: $defaultBoxShadow;
     text-align: center;
 
     .loading-animation {
-      margin: 1.687em auto;
+      height: 1.8em;
+      margin: 0 auto !important;
     }
   }
 
@@ -106,10 +109,8 @@
   }
 
   .calendar-name {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    order: 1;
+    margin: .75em -1.05em 0;
     padding: .5em;
     font-size: .75em;
     color: white;
