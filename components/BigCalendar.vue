@@ -8,8 +8,7 @@
       <tr>
         <th>Event</th>
         <th>Sted</th>
-        <th>Start</th>
-        <th>Slut</th>
+        <th>Tidspunkt</th>
       </tr>
     </thead>
     <tbody>
@@ -21,8 +20,7 @@
           <CalendarLabel :calendar="event.calendar" />
         </td>
         <td>{{event.location}}</td>
-        <td>{{formatCalendarDateObject(event.start)}}</td>
-        <td>{{formatCalendarDateObject(event.end)}}</td>
+        <td>{{formatCalendarDateObjects(event.start, event.end)}}</td>
       </tr>
     </tbody>
   </table>
@@ -32,7 +30,9 @@
   import CalendarLabel from "./CalendarLabel"
   import LoadingAnimation from "./LoadingAnimation"
 
-  import {getEvents, calendars} from "../apis/google-calendar"
+  import {getEvents} from "../apis/google-calendar"
+
+  import {formatDateSpan} from "../utils/format"
 
   export default {
     name: 'BigCalendar',
@@ -98,33 +98,20 @@
       addEvents(events) {
         this.events = [...this.events, ...events]
       },
-      formatCalendarDateObject(dateObject) {
-        if (dateObject.date) {
-          return this.formatDateString(dateObject.date)
-        } else if (dateObject.dateTime) {
-          return this.formatDateString(dateObject.dateTime, true)
-        }
-      },
-      formatDateString(dateString, includeTime) {
-        const date = new Date(dateString)
-        const formattedDate = date.toLocaleDateString(
-          'da',
-          {
-            dateStyle: 'long',
-          }
-        )
-
-        if (includeTime) {
-          return formattedDate + ' kl. ' + date.toLocaleDateString(
-            'da',
-            {
-              timeStyle: 'short'
-            }
+      formatCalendarDateObjects(dateObject1, dateObject2) {
+        if (dateObject1.date) {
+          return formatDateSpan(
+            new Date(dateObject1.date),
+            new Date(dateObject2.date)
+          )
+        } else if (dateObject1.dateTime) {
+          return formatDateSpan(
+            new Date(dateObject1.dateTime),
+            new Date(dateObject2.dateTime),
+            true
           )
         }
-
-        return formattedDate
-      }
+      },
     }
   }
 </script>
