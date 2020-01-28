@@ -45,5 +45,12 @@
     text-decoration: none;
     color: $backgroundColor;
     box-shadow: $defaultBoxShadow;
+    transition: background .2s ease-out;
+
+    @media (hover: hover) {
+      &:hover {
+        background: mix($backgroundColor, $duskBlue, 10%);
+      }
+    }
   }
 </style>
