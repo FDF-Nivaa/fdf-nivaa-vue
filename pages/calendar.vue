@@ -1,28 +1,45 @@
 <template>
   <article>
-    <h1>Kalender</h1>
-    <BigCalendar
-      :calendars="calendars"
-      :start-date="startDate"
-      :end-date="endDate"
-    />
+    <SubNavigation :menu-items="menuItems" />
+    <nuxt-child  />
   </article>
 </template>
 
 <script>
-  import {calendars} from '../google-calendar-config'
   import BigCalendar from "../components/BigCalendar"
+  import SubNavigation from "../components/SubNavigation"
+  import {CalendarIcon, CompassIcon, RepeatIcon} from "vue-feather-icons"
 
   export default {
-    components: { BigCalendar },
+    components: { BigCalendar, SubNavigation },
     data() {
       const startDate = new Date()
       const endDate = new Date()
 
       endDate.setFullYear(endDate.getFullYear() + 1)
-      //endDate.setMonth(endDate.getMonth() + 2)
 
-      return { calendars, events: [], startDate, endDate }
+      return {
+        events: [],
+        menuItems: [
+          {
+            title: 'Kalender',
+            url: '/calendar',
+            icon: CalendarIcon
+          },
+          {
+            title: 'Aktuelle lejre & arrangementer',
+            url: '/calendar/events',
+            icon: CompassIcon
+          },
+          {
+            title: 'Gentagne lejre & arrangementer',
+            url: '/calendar/repeated-events',
+            icon: RepeatIcon
+          },
+        ],
+        startDate,
+        endDate,
+      }
     },
   }
 </script>

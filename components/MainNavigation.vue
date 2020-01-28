@@ -52,16 +52,6 @@
             icon: CalendarIcon
           },
           {
-            title: 'Aktuelle lejre & arrangementer',
-            url: '/events',
-            icon: CompassIcon
-          },
-          {
-            title: 'Gentagne lejre & arrangementer',
-            url: '/repeated-events',
-            icon: RepeatIcon
-          },
-          {
             title: 'Mød lederne',
             url: '/staff',
             icon: UsersIcon
@@ -82,6 +72,7 @@
     left: 0;
     right: 0;
     background: white;
+    z-index: 1;
   }
 
   .main-navigation-inner {
@@ -115,15 +106,16 @@
     padding: 1em .5em;
     text-decoration: none;
     margin: 0;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
 
     &:after {
       content: '';
       position: absolute;
       display: block;
       left: 25%;
-      bottom: 1em;
+      bottom: .5em;
       width: 50%;
       border-top: 0.125em solid $duskBlue;
       transition: all 0.2s ease-out;
@@ -144,15 +136,15 @@
 
   .main-navigation-link-icon {
     display: block;
-    font-size: 1.125em;
+    font-size: 1.25em;
     width: 1em;
     height: 1em;
   }
 
   .main-navigation-link-text {
     display: block;
-    margin-left: .5em;
-    font-size: .8125em;
+    margin-top: .33em;
+    font-size: .75em;
   }
 
   .main-navigation-logo-link {

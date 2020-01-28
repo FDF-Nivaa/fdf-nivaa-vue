@@ -3,7 +3,7 @@
     <ul>
       <li v-for="event in repeatedEvents">
         <h3>
-          <nuxt-link :to="'/repeated-events/' + event._id">
+          <nuxt-link :to="'/calendar/repeated-events/' + event._id">
             {{event.title}}
           </nuxt-link>
         </h3>
