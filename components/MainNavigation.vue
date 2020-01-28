@@ -122,7 +122,7 @@
       transform: scaleX(var(--underline-scale));
     }
 
-    &.nuxt-link-exact-active {
+    &.nuxt-link-active {
       --underline-scale: 1;
     }
 

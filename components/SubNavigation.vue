@@ -2,12 +2,17 @@
   <nav class="sub-navigation">
     <div class="sub-navigation-inner">
       <ul class="sub-navigation-list">
-        <li class="sub-navigation-list-item" v-for="menuItem in menuItems" :key="menuItem.url">
+        <li
+          class="sub-navigation-list-item"
+          v-for="menuItem in menuItems"
+          :key="menuItem.url"
+        >
           <nuxt-link
             class="sub-navigation-link"
+            :class="{'is-top-level': menuItem.isTopLevel}"
             :to="menuItem.url"
           >
-            <component :is="menuItem.icon"/>
+            <component :is="menuItem.icon" />
             <span class="sub-navigation-link-text">
               {{menuItem.title}}
             </span>
@@ -28,7 +33,7 @@
         type: Array,
         required: true
       }
-    }
+    },
   }
 </script>
 
@@ -42,6 +47,7 @@
     font-size: .8125em;
     margin-bottom: 1em;
   }
+
   .sub-navigation-inner {
     display: flex;
     flex-direction: row;
@@ -75,8 +81,6 @@
   }
 
   .sub-navigation-link {
-    --underline-scale: 0;
-
     position: relative;
     display: flex;
     vertical-align: middle;
@@ -91,20 +95,22 @@
     color: $duskBlue;
     transition: all .2s ease-out;
 
-    &.nuxt-link-exact-active {
-      --underline-scale: 1;
+    &.nuxt-link-exact-active,
+    &:not(.is-top-level).nuxt-link-active {
       background: $duskBlue;
       border-color: $duskBlue;
       color: $backgroundColor;
+
+      @media (hover: hover) {
+        &:hover {
+          background: mix($duskBlue, $backgroundColor, 90%);
+        }
+      }
     }
 
     @media (hover: hover) {
       &:hover {
         background: mix($duskBlue, $backgroundColor, 10%);
-
-        &.nuxt-link-exact-active {
-          background: mix($duskBlue, $backgroundColor, 90%);
-        }
       }
     }
   }

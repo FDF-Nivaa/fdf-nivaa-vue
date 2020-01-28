@@ -24,7 +24,8 @@
           {
             title: 'Kalender',
             url: '/calendar',
-            icon: CalendarIcon
+            icon: CalendarIcon,
+            isTopLevel: true
           },
           {
             title: 'Aktuelle lejre & arrangementer',
