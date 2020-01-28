@@ -88,6 +88,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin: 0;
     padding: .75em .8em 0;
     border-radius: $defaultBorderRadius;
@@ -110,7 +111,7 @@
 
   .calendar-name {
     order: 1;
-    margin: .75em -1.05em 0;
+    margin: .75em -1.1em 0;
     padding: .5em;
     font-size: .75em;
     color: white;
