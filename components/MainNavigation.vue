@@ -119,7 +119,6 @@
       width: 50%;
       border-top: 0.125em solid $duskBlue;
       transition: all 0.2s ease-out;
-      margin: 0 -0.25em;
       transform: scaleX(var(--underline-scale));
     }
 
