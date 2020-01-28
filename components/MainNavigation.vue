@@ -73,6 +73,13 @@
     right: 0;
     background: white;
     z-index: 1;
+
+    @media (max-width: $largePhone) {
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      font-size: .8125rem;
+    }
   }
 
   .main-navigation-inner {
@@ -103,7 +110,7 @@
     position: relative;
     display: flex;
     vertical-align: middle;
-    padding: 1em .5em;
+    padding: 1em 3vw;
     text-decoration: none;
     margin: 0;
     flex-direction: column;

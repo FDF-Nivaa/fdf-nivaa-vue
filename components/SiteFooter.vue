@@ -26,7 +26,7 @@
           {{config.address.city}}</a>
         </p>
       </div>
-      <div class="some-links">
+      <div class="footer-content some-links">
         <h2>Sociale medier</h2>
         <ul class="some-links-list">
           <li class="some-links-list-item">
@@ -110,6 +110,7 @@
     font-size: 0.8em;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .footer-content {
@@ -119,14 +120,16 @@
   }
 
   .some-links {
-    text-align: right;
-    padding: 0 .5rem;
+    @media (min-width: 40em) {
+      text-align: right;
+    }
   }
 
   .some-links-list {
     list-style: none;
     display: inline-block;
     white-space: nowrap;
+    padding: 0;
   }
 
   .some-links-list-item {
