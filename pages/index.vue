@@ -11,17 +11,19 @@
     <aside>
       <h1>Det skal vi næste gang</h1>
       <NextCalendarEvents />
-      <p><nuxt-link to="/calendar">Se mere i kalenderen</nuxt-link></p>
+      <p><FancyButton link-to="/calendar"><CalendarIcon/> Se mere i kalenderen</FancyButton></p>
     </aside>
   </article>
 </template>
 
 <script>
+  import FancyButton from "../components/FancyButton"
   import NextCalendarEvents from "../components/NextCalendarEvents"
+  import {CalendarIcon,} from 'vue-feather-icons'
 
   export default {
     name: 'index',
-    components: { NextCalendarEvents },
+    components: { CalendarIcon, FancyButton, NextCalendarEvents },
     mounted() {
       this.$store.dispatch('clearError')
     },
