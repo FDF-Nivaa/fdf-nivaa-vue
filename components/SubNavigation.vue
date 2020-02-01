@@ -90,6 +90,7 @@
     flex-direction: row;
     align-items: center;
     text-align: center;
+    background: $navigationBackgroundColor;
     border: $borderWidth solid currentColor;
     border-right-width: 0;
     color: $duskBlue;
@@ -103,14 +104,14 @@
 
       @media (hover: hover) {
         &:hover {
-          background: mix($duskBlue, $backgroundColor, 90%);
+          background: mix($duskBlue, $navigationBackgroundColor, 90%);
         }
       }
     }
 
     @media (hover: hover) {
       &:hover {
-        background: mix($duskBlue, $backgroundColor, 10%);
+        background: mix($duskBlue, $navigationBackgroundColor, 10%);
       }
     }
   }

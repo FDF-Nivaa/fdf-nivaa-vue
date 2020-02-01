@@ -92,7 +92,7 @@
     margin: 0;
     padding: .75em .8em 0;
     border-radius: $defaultBorderRadius;
-    background: white;
+    background: $navigationBackgroundColor;
     box-shadow: $defaultBoxShadow;
     text-align: center;
 
