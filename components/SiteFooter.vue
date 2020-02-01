@@ -84,7 +84,7 @@
     position: relative;
     padding: 3rem 2.5rem 2.5rem;
     color: $backgroundColor;
-    background: $nightBlue;
+    background: $duskBlue;
 
     h2,
     a {
