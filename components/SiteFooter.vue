@@ -93,6 +93,7 @@
 
     h2 {
       font-size: 1.2em;
+      font-weight: $fontWeightSemiBold;
     }
 
     @media (max-width: $maxContentWidth) {
