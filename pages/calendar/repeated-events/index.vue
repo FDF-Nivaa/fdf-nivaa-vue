@@ -1,20 +1,32 @@
 <template>
   <article>
-    <ul>
-      <li v-for="event in repeatedEvents">
-        <h3>
-          <nuxt-link :to="'/calendar/repeated-events/' + event._id">
-            {{event.title}}
+    <ContentList :items="repeatedEvents">
+      <template #default="{item}">
+        <h2>
+          <nuxt-link :to="'/calendar/repeated-events/' + item._id">
+            {{item.title}}
           </nuxt-link>
-        </h3>
-        <div v-html="event.description"></div>
-      </li>
-    </ul>
+        </h2>
+        <div v-html="item.description"></div>
+        <p>
+          <FancyButton :to="'/calendar/repeated-events/' + item._id">
+            Læs mere om {{item.title}}
+            <ChevronRightIcon />
+          </FancyButton>
+
+        </p>
+      </template>
+    </ContentList>
   </article>
 </template>
 
 <script>
+  import {ChevronRightIcon} from 'vue-feather-icons'
+  import ContentList from '../../../components/ContentList'
+  import FancyButton from "../../../components/FancyButton"
+
   export default {
+    components: { ChevronRightIcon, ContentList, FancyButton },
     computed: {
       repeatedEvents() {
         return this.$store.state['repeated-events'].list
@@ -26,3 +38,10 @@
     },
   }
 </script>
+
+<style
+  lang="scss"
+  scoped
+>
+
+</style>
