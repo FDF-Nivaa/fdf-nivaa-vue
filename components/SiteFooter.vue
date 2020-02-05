@@ -112,6 +112,10 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    @media (min-width: $largeDisplay) {
+      max-width: $maxContentWidthLargeDisplay;
+    }
   }
 
   .footer-content {

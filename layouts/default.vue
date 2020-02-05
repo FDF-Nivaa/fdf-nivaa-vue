@@ -68,6 +68,10 @@
     /deep/ p, /deep/ ul, /deep/ ol {
       line-height: 1.4em;
     }
+
+    @media (min-width: $largeDisplay) {
+      max-width: $maxContentWidthLargeDisplay;
+    }
   }
 
   .error-message {

@@ -25,6 +25,9 @@ $backgroundColorSlightContrast: darken($backgroundColor, 5%);
 
 // Sizes
 $maxContentWidth: 70rem;
+$maxContentWidthLargeDisplay: calc(#{$maxContentWidth} + 7vw);
+$fontSizeLargeDisplay: calc(1em + .1vw);
+$largeDisplay: 80rem;
 $largePhone: 440px;
 
 // Fonts

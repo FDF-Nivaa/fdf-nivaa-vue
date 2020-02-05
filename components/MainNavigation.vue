@@ -87,7 +87,11 @@
     flex-direction: row;
     max-width: $maxContentWidth;
     margin: auto;
-    padding: 0 1.25em;
+    padding: 0 0 0 1.25em;
+
+    @media (min-width: $largeDisplay) {
+      max-width: $maxContentWidthLargeDisplay;
+    }
   }
 
   .main-navigation-list {
@@ -116,6 +120,10 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    @media (min-width: 1066px) {
+      padding: 1em 2rem;
+    }
 
     &:after {
       content: '';

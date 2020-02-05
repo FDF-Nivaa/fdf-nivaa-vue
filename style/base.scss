@@ -12,8 +12,8 @@ body {
   hyphens: manual;
   font-weight: $fontWeightRegular;
 
-  @media (min-width: 80rem) {
-    font-size: 1.25vw;
+  @media (min-width: $largeDisplay) {
+    font-size: $fontSizeLargeDisplay;
   }
 }
 
