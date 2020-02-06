@@ -10,8 +10,9 @@
       <template v-if="isLoading && !ageGroup">
         -
       </template>
+      <AgeGroupSpan v-else-if="ageGroup" :min="ageGroup.minAge" :max="ageGroup.maxAge"/>
       <template v-else>
-        {{ageGroup ? ageGroup.age : 'Alle aldre'}}
+        Alle aldre
       </template>
     </h3>
     <LoadingAnimation v-if="isLoading" />
@@ -26,10 +27,11 @@
 <script>
   import {formatDate, formatDateSpan} from "../utils/format"
   import LoadingAnimation from "./LoadingAnimation"
+  import AgeGroupSpan from "./AgeGroupSpan"
 
   export default {
     name: 'NextCalendarEvent',
-    components: { LoadingAnimation },
+    components: { AgeGroupSpan, LoadingAnimation },
     props: {
       calendar: {
         type: Object,
