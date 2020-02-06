@@ -60,6 +60,7 @@
   scoped
 >
   .fancy-button {
+    display: inline-block;
     background: $duskBlue;
     border: 1px solid $duskBlue;
     border-radius: $defaultBorderRadius;
@@ -70,6 +71,14 @@
     font-family: $mainFont;
     cursor: pointer;
     font-size: .9375em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+
+    @media (min-width: 50rem) {
+      font-size: .8125em;
+    }
 
     &.ghost {
       background: $backgroundColor;
