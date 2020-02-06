@@ -92,6 +92,7 @@
     }
 
     h2 {
+      margin-top: 0;
       font-size: 1.2em;
       font-weight: $fontWeightSemiBold;
     }
