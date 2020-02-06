@@ -1,23 +1,20 @@
 <template>
-  <article>
-    <ContentList :items="repeatedEvents">
-      <template #default="{item}">
-        <h2>
-          <nuxt-link :to="'/calendar/repeated-events/' + item._id">
-            {{item.title}}
-          </nuxt-link>
-        </h2>
-        <div v-html="item.description"></div>
-        <p>
-          <FancyButton :to="'/calendar/repeated-events/' + item._id">
-            Læs mere om {{item.title}}
-            <ChevronRightIcon />
-          </FancyButton>
-
-        </p>
-      </template>
-    </ContentList>
-  </article>
+  <ContentList :items="repeatedEvents">
+    <template #default="{item: event}">
+      <h2>
+        <nuxt-link :to="'/calendar/repeated-events/' + event._id">
+          {{event.title}}
+        </nuxt-link>
+      </h2>
+      <div v-html="event.description"></div>
+      <p>
+        <FancyButton :to="'/calendar/repeated-events/' + event._id">
+          Læs mere <span class="hide-on-mobile">om {{event.title}}</span>
+          <ChevronRightIcon />
+        </FancyButton>
+      </p>
+    </template>
+  </ContentList>
 </template>
 
 <script>
@@ -43,5 +40,4 @@
   lang="scss"
   scoped
 >
-
 </style>

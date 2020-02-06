@@ -1,25 +1,29 @@
 <template>
-  <article>
-    <ul>
-      <li v-for="event in events">
-        <h3>
-          <nuxt-link :to="'/calendar/events/' + event._id">
-            {{event.title}}
-          </nuxt-link>
-        </h3>
-        <div v-html="event.description"></div>
-        <p>
-          <nuxt-link :to="'/calendar/repeated-events/' + event.repeatedEvent._id">
-            Læs mere om {{event.repeatedEvent.display}}
-          </nuxt-link>
-        </p>
-      </li>
-    </ul>
-  </article>
+  <ContentList :items="events">
+    <template #default="{item: event}">
+    <h2>
+        <nuxt-link :to="'/calendar/events/' + event._id">
+          {{event.title}}
+        </nuxt-link>
+      </h2>
+      <div v-html="event.description"></div>
+      <p>
+        <FancyButton :to="'/calendar/events/' + event._id">
+          Læs mere om <span class="hide-on-mobile">om {{event.title}}</span>
+          <ChevronRightIcon />
+        </FancyButton>
+      </p>
+    </template>
+  </ContentList>
 </template>
 
 <script>
+  import {ChevronRightIcon} from 'vue-feather-icons'
+  import ContentList from '../../../components/ContentList'
+  import FancyButton from "../../../components/FancyButton"
+
   export default {
+    components: {ChevronRightIcon, ContentList, FancyButton},
     computed: {
       events() {
         return this.$store.state.events.list

@@ -1,24 +1,32 @@
 <template>
   <article>
     <h1>Aldersgrupper</h1>
-    <ul>
-      <li v-for="group in ageGroups">
-        <h3>
+    <ContentList :items="ageGroups">
+      <template #default="{item: group}">
+        <h2>
           <nuxt-link :to="'/age-groups/' + group._id">
             {{group.title}}
           </nuxt-link>
-        </h3>
-        <p v-if="group.intro">{{group.intro}}</p>
-        <div v-else v-html="group.content"></div>
-        <p v-if="group.intro && group.content"><nuxt-link :to="`/age-groups/${group._id}`">Læs mere</nuxt-link></p>
-      </li>
-    </ul>
+        </h2>
+        <p v-if="group.age">{{group.age}}</p>
+        <p v-if="group.intro || group.description">
+          <FancyButton :to="`/age-groups/${group._id}`">Læs mere om {{group.title}}
+            <ChevronRightIcon />
+          </FancyButton>
+        </p>
+      </template>
+    </ContentList>
   </article>
 </template>
 
 <script>
+  import {ChevronRightIcon} from 'vue-feather-icons'
+  import ContentList from "../../components/ContentList"
+  import FancyButton from "../../components/FancyButton"
+
   export default {
     name: 'age-groups.index',
+    components: { ChevronRightIcon, ContentList, FancyButton },
     computed: {
       ageGroups() {
         return this.$store.state['age-groups'].list
