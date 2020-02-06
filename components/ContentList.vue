@@ -22,24 +22,27 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style
+  lang="scss"
+  scoped
+>
   .content-list {
-    max-width: 40em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-gap: 1em 3em;
     list-style: none;
     padding: 0 1.75em 1em;
 
+    @media (max-width: 30rem) {
+      grid-template-columns: calc(100vw - 6em);
+    }
   }
 
   .content-list-item {
     position: relative;
 
-    &:not(:last-child) {
-      margin-bottom: 3em;
-
-    }
-
     h2 {
-      margin-bottom: .667em;
+      margin: 0 0 .667em;
 
       > a {
         text-decoration: none;
