@@ -1,14 +1,14 @@
 <template>
   <span class="age-group-span">
     <template v-if="isSpan">
-    {{minValue}}
-    {{hasCommonUnit ? '' : minUnit}}
-    -
-    {{maxValue}}
-    {{maxUnit}}
+      {{minValue}}
+      {{hasCommonUnit ? '' : minUnit}}
+      -
+      {{maxValue}}
+      {{maxUnit}}
     </template>
     <template v-else>
-    {{singleValue}}
+      {{singleValue}}
     </template>
   </span>
 </template>
