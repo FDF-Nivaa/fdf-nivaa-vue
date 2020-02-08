@@ -10,6 +10,9 @@ export function createStore(internalName, publicName, publicNamePlural) {
     getters: {
       getById: state => id => {
         return state.list.find(item => item._id === id)
+      },
+      getByCustomId: state => id => {
+        return state.list.find(item => item.id === id)
       }
     },
     mutations: {
@@ -32,6 +35,24 @@ export function createStore(internalName, publicName, publicNamePlural) {
     actions: {
       async fetchById({ commit }, id) {
         await cockpitApi.post(internalName, { filter: { _id: id } })
+          .then(response => {
+            if (response.status === 200) {
+              commit('setItem', response.data.entries[0])
+            } else {
+              commit('setError', {
+                statusCode: response.status,
+                message: `Det valgte ${publicName} blev ikke fundet`
+              }, { root: true })
+            }
+          }).catch((error) => {
+            commit('setError', {
+              statusCode: error.response.status,
+              message: error.response.data.error
+            }, { root: true })
+          })
+      },
+      async fetchByCustomId({ commit }, id) {
+        await cockpitApi.post(internalName, { filter: { id: id } })
           .then(response => {
             if (response.status === 200) {
               commit('setItem', response.data.entries[0])
