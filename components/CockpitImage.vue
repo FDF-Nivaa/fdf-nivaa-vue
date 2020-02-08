@@ -48,7 +48,7 @@
   scoped
 >
   .cockpit-image {
-    border-radius: 1em;
+    border-radius: $largeBorderRadius;
     box-shadow: $defaultBoxShadow;
   }
   .format-round {
