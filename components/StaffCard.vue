@@ -69,6 +69,17 @@
     overflow: hidden;
     flex-direction: row-reverse;
     margin-right: 1em;
+
+    .staff-card-image {
+      height: 5.75em;
+      flex: 0 0 5.75em;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .loading-animation {
+      margin: 1em auto !important;
+    }
   }
 
   .staff-card-details {
@@ -96,13 +107,6 @@
       }
     }
 
-  }
-
-  .staff-card .staff-card-image {
-    height: 5.75em;
-    flex: 0 0 5.75em;
-    object-fit: cover;
-    border-radius: 0;
   }
 
 </style>
