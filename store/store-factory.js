@@ -75,10 +75,11 @@ export function createStore(internalName, publicName, publicNamePlural) {
         }
       },
       async fetchAll({ commit }) {
+        commit('allFetchedOnce')
+
         await cockpitApi.get(internalName)
           .then(response => {
             if (response.status === 200) {
-              commit('allFetchedOnce')
               commit('setList', response.data.entries)
             } else {
               commit('setError', {
