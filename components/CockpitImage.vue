@@ -1,5 +1,7 @@
 <template>
   <img
+    class="cockpit-image"
+    :class="`format-${format}`"
     :src="fullSource"
     :alt="alt"
   >
@@ -7,6 +9,12 @@
 
 <script>
   import {cockpit as cockpitConfig} from '~/cockpit-config'
+
+  export const CockpitImageFormat = {
+    DEFAULT: 'default',
+    ROUND: 'round'
+  }
+
   export default {
     name: 'CockpitImage',
     props: {
@@ -17,6 +25,14 @@
       alt: {
         type: String,
         default: ''
+      },
+      format: {
+        type: String,
+        required: false,
+        default: CockpitImageFormat.DEFAULT,
+        validator(format) {
+          return Object.values(CockpitImageFormat).includes(format)
+        }
       }
     },
     computed: {
@@ -26,3 +42,16 @@
     }
   }
 </script>
+
+<style
+  lang="scss"
+  scoped
+>
+  .cockpit-image {
+    border-radius: 1em;
+    box-shadow: $defaultBoxShadow;
+  }
+  .format-round {
+    border-radius: 100%;
+  }
+</style>
