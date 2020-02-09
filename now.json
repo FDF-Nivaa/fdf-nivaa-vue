@@ -1,4 +1,12 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "nuxt.config.js",
+      "use": "@nuxtjs/now-builder",
+      "config": {}
+    }
+  ],
   "env": {
     "COCKPIT_TOKEN": "@fdf-nivaa-cockpit-token",
     "GOOGLE_CALENDAR_API_KEY": "@fdf-nivaa-google-calendar-api-key"
