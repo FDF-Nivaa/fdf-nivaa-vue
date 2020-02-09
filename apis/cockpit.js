@@ -1,8 +1,8 @@
 const axios = require('axios')
-import {cockpit as cockpitConfig} from '~/cockpit-config'
+import config from '~/site.config'
 
 export function createCollectionUrl(collection) {
-  return `${cockpitConfig.url}/api/collections/get/${collection}?token=${cockpitConfig.token}`
+  return `${config.cockpitUrl}/api/collections/get/${collection}?token=${process.env.cockpitToken}`
 }
 
 export default class CockpitApi {

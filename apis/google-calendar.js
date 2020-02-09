@@ -1,10 +1,10 @@
 import queryString from "query-string"
 
 import axios from 'axios'
-import config from '../google-calendar-config'
+import config from '~/site.config'
 
-const apiKey = config.key
-export const calendars = config.calendars
+const apiKey = process.env.googleCalendarApiKey
+export const calendars = config.googleCalendars
 
 export function getEvents(calendarId, startDate, endDate, limit) {
   const options = {

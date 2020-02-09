@@ -1,8 +1,13 @@
 const pkg = require('./package')
-
+const { parsed: env } = require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
+
+  env: {
+    cockpitToken: process.env.COCKPIT_TOKEN || env.COCKPIT_TOKEN,
+    googleCalendarApiKey: process.env.GOOGLE_CALENDAR_API_KEY || env.GOOGLE_CALENDAR_API_KEY
+  },
 
   meta: {
     name: 'FDF Nivå',

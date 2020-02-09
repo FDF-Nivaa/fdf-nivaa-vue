@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import {cockpit as cockpitConfig} from '~/cockpit-config'
+  import config from '~/site.config'
 
   export const CockpitImageFormat = {
     DEFAULT: 'default',
@@ -37,7 +37,7 @@
     },
     computed: {
       fullSource() {
-        return cockpitConfig.url + this.src
+        return config.cockpitUrl + this.src
       }
     }
   }

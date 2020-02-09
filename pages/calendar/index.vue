@@ -11,7 +11,7 @@
 
 <script>
   import BigCalendar from "../../components/BigCalendar"
-  import {calendars} from "../../google-calendar-config"
+  import siteConfig from '../../site.config'
 
   export default {
     components: { BigCalendar },
@@ -20,9 +20,9 @@
       const endDate = new Date()
 
       endDate.setFullYear(endDate.getFullYear() + 1)
-      
+
       return {
-        calendars,
+        calendars: siteConfig.googleCalendars,
         startDate,
         endDate,
       }

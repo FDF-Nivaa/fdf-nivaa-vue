@@ -9,13 +9,13 @@
 </template>
 <script>
   import NextCalendarEvent from "./NextCalendarEvent"
-  import {calendars} from '../google-calendar-config'
+  import siteConfig from '../site.config'
 
   export default {
     name: 'NextCalendarEvents',
     components: { NextCalendarEvent },
     data() {
-      return { calendars }
+      return { calendars: siteConfig.googleCalendars }
     },
   }
 </script>
