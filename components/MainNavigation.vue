@@ -12,12 +12,19 @@
         >
       </nuxt-link>
       <ul class="main-navigation-list">
-        <li class="main-navigation-list-item" v-for="menuItem in menuItems" :key="menuItem.url">
+        <li
+          class="main-navigation-list-item"
+          v-for="menuItem in menuItems"
+          :key="menuItem.url"
+        >
           <nuxt-link
             class="main-navigation-link"
             :to="menuItem.url"
           >
-            <component :is="menuItem.icon"/>
+            <component
+              :is="menuItem.icon"
+              class="main-navigation-link-icon"
+            />
             <span class="main-navigation-link-text">
               {{menuItem.title}}
             </span>
@@ -79,6 +86,7 @@
       top: auto;
       bottom: 0;
       font-size: .8125rem;
+      padding-bottom: env(safe-area-inset-bottom);
     }
   }
 
@@ -153,6 +161,10 @@
     font-size: 1.25em;
     width: 1em;
     height: 1em;
+
+    @media (max-width: $largePhone) {
+      font-size: 1.5em;
+    }
   }
 
   .main-navigation-link-text {

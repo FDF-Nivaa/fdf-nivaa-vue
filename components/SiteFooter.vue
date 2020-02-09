@@ -104,6 +104,10 @@
     @media (max-width: 30em) {
       padding: 2.5rem 1rem 2rem;
     }
+
+    @media (max-width: $largePhone) {
+      padding-bottom: 5rem;
+    }
   }
 
   .footer-inner {
