@@ -1,16 +1,7 @@
 const pkg = require('./package')
-const { parsed: env } = require('dotenv').config()
 
-let cockpitToken = process.env.COCKPIT_TOKEN
-let googleCalendarApiKey = process.env.GOOGLE_CALENDAR_API_KEY
-
-if (!cockpitToken && env && env.COCKPIT_TOKEN) {
-  cockpitToken = env.COCKPIT_TOKEN
-}
-
-if (!googleCalendarApiKey && env && env.GOOGLE_CALENDAR_API_KEY) {
-  googleCalendarApiKey = env.GOOGLE_CALENDAR_API_KEY
-}
+const cockpitToken = process.env.COCKPIT_TOKEN
+const googleCalendarApiKey = process.env.GOOGLE_CALENDAR_API_KEY
 
 module.exports = {
   mode: 'universal',
@@ -92,5 +83,9 @@ module.exports = {
     extend(config, ctx) {
 
     }
-  }
+  },
+
+  buildModules: [
+    '@nuxtjs/dotenv',
+  ]
 }
