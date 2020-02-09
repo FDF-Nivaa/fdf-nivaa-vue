@@ -29,6 +29,8 @@ $maxContentWidthLargeDisplay: calc(#{$maxContentWidth} + 7vw);
 $fontSizeLargeDisplay: calc(1em + .1vw);
 $largeDisplay: 80rem;
 $largePhone: 440px;
+$mediumPhone: 375px;
+$smallPhone: 320px;
 
 // Fonts
 $mainFont: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
