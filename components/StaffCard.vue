@@ -5,6 +5,10 @@
         <h3 class="staff-card-name">
           <NuxtLink :to="`/staff/${person._id}`">{{person.name}}</NuxtLink>
         </h3>
+        <p
+          v-if="label"
+          class="staff-card-label"
+        >{{label}}</p>
         <dl class="staff-card-contact">
           <template v-if="person.phone">
             <dt>
@@ -39,6 +43,10 @@
     name: 'StaffCard',
     components: { CockpitImage, LoadingAnimation, MailIcon, PhoneIcon },
     props: {
+      label: {
+        type: String,
+        required: false
+      },
       staffId: {
         type: String,
         required: true
@@ -62,19 +70,19 @@
   scoped
 >
   .staff-card {
+    position: relative;
     display: inline-flex;
     background: mix($navigationBackgroundColor, $backgroundColor);
     box-shadow: $defaultBoxShadow;
     border-radius: $largeBorderRadius;
-    overflow: hidden;
     flex-direction: row-reverse;
-    margin-right: 1em;
 
     .staff-card-image {
-      height: 5.75em;
-      flex: 0 0 5.75em;
+      height: 6em;
+      flex: 0 0 6em;
       object-fit: cover;
-      border-radius: 0;
+      border-radius: $largeBorderRadius 0 0 $largeBorderRadius;
+      box-shadow: none;
     }
 
     .loading-animation {
@@ -83,18 +91,13 @@
   }
 
   .staff-card-details {
+    flex-grow: 1;
     padding: .75em 1.5em .75em 1em;
-  }
-
-  .staff-card-contact {
-    display: grid;
-    grid-template: 2em / 2.5em auto;
-    font-size: .75em;
   }
 
   .staff-card-name {
     font-size: 1em;
-    margin-top: 0;
+    margin: 0 0 .25em;
 
     > a {
       color: inherit;
@@ -106,7 +109,25 @@
         }
       }
     }
+  }
 
+
+  .staff-card-contact {
+    display: grid;
+    grid-template: 2em / 2.5em auto;
+    font-size: .75em;
+  }
+
+  .staff-card-label {
+    position: absolute;
+    bottom: -1em;
+    left: 50%;
+    padding: .25em 1em;
+    font-size: .75em;
+    background: $duskBlue;
+    color: $backgroundColor;
+    transform: translate(-50%, 50%) rotate(-3deg);
+    box-shadow: $defaultBoxShadow;
   }
 
 </style>
