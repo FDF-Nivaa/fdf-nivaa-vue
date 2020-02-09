@@ -57,7 +57,7 @@
       height: .5em;
       width: .5em;
       background: $duskBlue;
-      top: .5em;
+      top: .8em;
       left: -1em;
       opacity: .5;
       transform: translateX(-50%) rotate(-45deg) skew(18deg, 18deg);
