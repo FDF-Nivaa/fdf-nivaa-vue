@@ -1,4 +1,4 @@
-const pkg = require('./package')
+require('dotenv').config()
 
 const cockpitToken = process.env.COCKPIT_TOKEN
 const googleCalendarApiKey = process.env.GOOGLE_CALENDAR_API_KEY
