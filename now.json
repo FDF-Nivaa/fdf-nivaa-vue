@@ -1,0 +1,6 @@
+{
+  "env": {
+    "COCKPIT_TOKEN": "@fdf-nivaa-cokpit-token",
+    "GOOGLE_CALENDAR_API_KEY": "@fdfnivaa-google-calendar-api-key"
+  }
+}
