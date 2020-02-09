@@ -85,14 +85,13 @@
       margin: 0 auto .5em;
       width: 25rem;
       max-width: 100vw;
-      flex-basis: 0;
-
+      flex-basis: auto;
     }
   }
 
   @media (max-width: 27.5rem) {
     .page-content-picture-wrapper {
-      width: calc(100vw - 1rem);
+      width: 100vw;
       margin: 0 -1.25rem .5em;
 
       .page-content-picture {
