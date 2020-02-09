@@ -1,12 +1,23 @@
 const pkg = require('./package')
 const { parsed: env } = require('dotenv').config()
 
+let cockpitToken = process.env.COCKPIT_TOKEN
+let googleCalendarApiKey = process.env.GOOGLE_CALENDAR_API_KEY
+
+if (!cockpitToken && env && env.COCKPIT_TOKEN) {
+  cockpitToken = env.COCKPIT_TOKEN
+}
+
+if (!googleCalendarApiKey && env && env.GOOGLE_CALENDAR_API_KEY) {
+  googleCalendarApiKey = env.GOOGLE_CALENDAR_API_KEY
+}
+
 module.exports = {
   mode: 'universal',
 
   env: {
-    cockpitToken: process.env.COCKPIT_TOKEN || env.COCKPIT_TOKEN,
-    googleCalendarApiKey: process.env.GOOGLE_CALENDAR_API_KEY || env.GOOGLE_CALENDAR_API_KEY
+    cockpitToken,
+    googleCalendarApiKey
   },
 
   meta: {
