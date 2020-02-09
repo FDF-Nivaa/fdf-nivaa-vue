@@ -40,6 +40,10 @@ module.exports = {
     scss: ['style/variables.scss']
   },
 
+  server: {
+    host: '0.0.0.0'
+  },
+
   /*
   ** Plugins to load before mounting the App
   */
