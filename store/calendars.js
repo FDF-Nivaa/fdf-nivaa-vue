@@ -51,8 +51,9 @@ export const actions = {
       commit('setEvents', { calendarId, events })
     }).catch((error) => {
       commit('setError', {
+        source: 'Google Calendar',
         statusCode: error.response.status,
-        message: error.response.text
+        message: error.response.data.error.message
       }, { root: true })
     })
   },
@@ -61,8 +62,9 @@ export const actions = {
       dispatch('fetchEvents', { calendarId: calendar.id })
     })).catch((error) => {
       commit('setError', {
+        source: 'Google Calendar',
         statusCode: error.response.status,
-        message: error.response.text
+        message: error.response.data.error.message
       }, { root: true })
     })
   },

@@ -40,12 +40,14 @@ export function createStore(internalName, publicName, publicNamePlural) {
               commit('setItem', response.data.entries[0])
             } else {
               commit('setError', {
+                source: 'Cockpit',
                 statusCode: response.status,
                 message: `Det valgte ${publicName} blev ikke fundet`
               }, { root: true })
             }
           }).catch((error) => {
             commit('setError', {
+              source: 'Cockpit',
               statusCode: error.response.status,
               message: error.response.data.error
             }, { root: true })
@@ -58,12 +60,14 @@ export function createStore(internalName, publicName, publicNamePlural) {
               commit('setItem', response.data.entries[0])
             } else {
               commit('setError', {
+                source: 'Cockpit',
                 statusCode: response.status,
                 message: `Det valgte ${publicName} blev ikke fundet`
               }, { root: true })
             }
           }).catch((error) => {
             commit('setError', {
+              source: 'Cockpit',
               statusCode: error.response.status,
               message: error.response.data.error
             }, { root: true })
@@ -83,12 +87,14 @@ export function createStore(internalName, publicName, publicNamePlural) {
               commit('setList', response.data.entries)
             } else {
               commit('setError', {
+                source: 'Cockpit',
                 statusCode: response.status,
                 message: `Ingen ${publicNamePlural} fundet`
               }, { root: true })
             }
           }).catch((error) => {
             commit('setError', {
+              source: 'Cockpit',
               statusCode: error.response.status,
               message: error.response.data.error
             }, { root: true })
