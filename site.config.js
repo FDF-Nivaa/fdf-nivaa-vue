@@ -1,5 +1,5 @@
 export default {
-  cockpitUrl: 'http://cockpit.fdfkarlebo.dk',
+  cockpitUrl: 'https://cockpit.fdfkarlebo.dk',
   facebookUrl: 'https://www.facebook.com/FDFNivaa/',
   presentationalFacebookUrl: 'facebook.com/FDFNivaa',
   address: {
