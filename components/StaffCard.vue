@@ -120,8 +120,8 @@
 
   .staff-card-label {
     position: absolute;
-    bottom: -1em;
-    left: 50%;
+    top: -3em;
+    left: 8em;
     padding: .25em 1em;
     font-size: .75em;
     background: $duskBlue;

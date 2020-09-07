@@ -8,7 +8,12 @@
             {{group.title}}
           </nuxt-link>
         </h2>
-        <p v-if="group.minAge || group.maxAge"><AgeGroupSpan :min="group.minAge" :max="group.maxAge"/></p>
+        <p v-if="group.minAge || group.maxAge">
+          <AgeGroupSpan
+            :min="group.minAge"
+            :max="group.maxAge"
+          />
+        </p>
         <p v-if="group.intro || group.description">
           <FancyButton :to="`/age-groups/${group._id}`">Læs mere om {{group.title}}
             <ChevronRightIcon />

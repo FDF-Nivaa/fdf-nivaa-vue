@@ -100,6 +100,11 @@
     @media (min-width: $largeDisplay) {
       max-width: $maxContentWidthLargeDisplay;
     }
+
+    @supports (padding: env(safe-area-inset-bottom)) {
+      padding-left: unquote('max(env(safe-area-inset-left), 1.25em)');
+      padding-right: unquote('env(safe-area-inset-right)');
+    }
   }
 
   .main-navigation-list {
@@ -180,6 +185,6 @@
 
   .main-navigation-logo {
     display: block;
-    height: 4em;
+    height: 4.25em;
   }
 </style>

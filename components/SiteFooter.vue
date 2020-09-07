@@ -4,7 +4,7 @@
       <div class="footer-content">
         <h2>Kom og vær med</h2>
         <p>
-          Vi mødes hver tirsdag aften.
+          Vi mødes hver <em>tirsdag aften.</em>
           <br>
           <nuxt-link to="/age-groups">Se mødetider for aldersgrupperne</nuxt-link>
         </p>
@@ -107,6 +107,15 @@
 
     @media (max-width: $largePhone) {
       padding-bottom: 5rem;
+
+      @supports (padding-bottom: calc(5rem + env(safe-area-inset-bottom))) {
+        padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+      }
+    }
+
+    @supports (padding: env(safe-area-inset-bottom)) {
+      padding-left: unquote('max(env(safe-area-inset-left), 1.25em)');
+      padding-right: unquote('max(env(safe-area-inset-right), 1.25em)');
     }
   }
 

@@ -81,12 +81,13 @@
     }
 
     &.ghost {
-      background: $backgroundColor;
+      background: transparent;
       color: $duskBlue;
+      border-color: currentColor;
 
       @media (hover: hover) {
         &:hover {
-          background: mix($backgroundColor, $duskBlue, 90%);
+          background: mix(transparent, $duskBlue, 90%);
         }
       }
     }
@@ -96,7 +97,7 @@
 
       @media (hover: hover) {
         &:hover {
-          background: mix($backgroundColor, $duskBlue, 10%);
+          background: mix(transparent, $duskBlue, 10%);
         }
       }
     }

@@ -30,18 +30,33 @@
       }
     },
     computed: {
+      primaryStaffId() {
+        return this.primaryStaff && this.primaryStaff._id
+      },
+      combinedStaff() {
+        if (this.primaryStaff) {
+          return [
+            this.primaryStaff,
+            ...this.staff.filter(person => person._id !== this.primaryStaffId)
+          ]
+        }
+
+        return this.staff
+      },
       processedStaff() {
-        const primaryStaffId = this.primaryStaff._id
-        return [
-          { id: primaryStaffId, label: 'Kontaktperson' },
-          ...this.staff.filter(person => person._id !== primaryStaffId).map(person => ({ id: person._id }))
-        ]
+        return this.combinedStaff.map(person => ({
+          id: person._id,
+          label: person._id === this.primaryStaffId ? 'Kontaktperson' : undefined
+        }))
       }
     }
   }
 </script>
 
-<style lang="scss" scoped>
+<style
+  lang="scss"
+  scoped
+>
   .staff-list {
     position: relative;
     display: grid;

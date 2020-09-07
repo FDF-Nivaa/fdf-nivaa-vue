@@ -6,14 +6,19 @@
         class="error-message"
         v-if="hasError"
       >
-        <h2 v-if="error.statusCode">Fejl {{error.statusCode}}</h2>
+        <h2>Ups!</h2>
         <p>{{error.message}}</p>
+        <p
+          v-if="error.source || error.statusCode"
+          class="error-source"
+        >{{error.source}}
+          <ArrowRightIcon v-if="error.source && error.statusCode" />
+          {{error.statusCode}}
+        </p>
         <p>
-          <button
-            type="button"
-            @click="clearErrorMessage"
-          >Luk
-          </button>
+          <FancyButton @click="clearErrorMessage">
+            Luk
+          </FancyButton>
         </p>
       </div>
       <nuxt />
@@ -23,13 +28,20 @@
 </template>
 
 <script>
+  import {ArrowRightIcon} from 'vue-feather-icons'
+  import FancyButton, {Variants} from "../components/FancyButton"
   import MainNavigation from '~/components/MainNavigation'
   import SiteFooter from "../components/SiteFooter"
 
   export default {
     components: {
+      ArrowRightIcon,
+      FancyButton,
       MainNavigation,
       SiteFooter
+    },
+    data() {
+      return { Variants }
     },
     computed: {
       hasError() {
@@ -72,11 +84,34 @@
     @media (min-width: $largeDisplay) {
       max-width: $maxContentWidthLargeDisplay;
     }
+
+    @supports (padding: env(safe-area-inset-bottom)) {
+      padding-left: unquote('max(env(safe-area-inset-left), 1.25em)');
+      padding-right: unquote('max(env(safe-area-inset-right), 1.25em)');
+    }
   }
 
   .error-message {
-    padding: 1.5em;
-    background: rgba(190, 0, 0, 0.35);
+    position: relative;
+    padding: 1em 2em;
+    background: $fallRed;
+    color: white;
+    border-radius: $largeBorderRadius;
+    box-shadow: $defaultBoxShadow;
     margin: .5em 0 1.5em;
+
+    > h2:first-child {
+      margin-top: .5em;
+      color: inherit;
+    }
+
+    .error-source {
+      font-size: .75em;
+      opacity: .75;
+    }
+
+    .fancy-button {
+      color: white;
+    }
   }
 </style>

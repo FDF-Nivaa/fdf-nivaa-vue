@@ -1,12 +1,12 @@
 <template>
   <article v-if="ageGroup">
-    <h1>{{ageGroup.title}}</h1>
+    <h1 :style="{color: ageGroup.color}">{{ageGroup.title}}</h1>
     <div
       v-html="ageGroup.description"
     ></div>
     <h2>Dine leder</h2>
     <StaffList
-      :staff="ageGroup.staff"
+      :staff="ageGroup.staff || []"
       :primary-staff="ageGroup.primaryStaff"
     />
   </article>

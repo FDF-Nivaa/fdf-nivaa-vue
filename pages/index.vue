@@ -3,7 +3,7 @@
     <aside>
       <h1>Det skal vi næste gang</h1>
       <NextCalendarEvents />
-      <p><FancyButton to="/calendar"><CalendarIcon/> Se mere i kalenderen</FancyButton></p>
+      <p class="center-text"><FancyButton to="/calendar"><CalendarIcon/> Se mere i kalenderen</FancyButton></p>
     </aside>
   </PageContent>
 </template>
