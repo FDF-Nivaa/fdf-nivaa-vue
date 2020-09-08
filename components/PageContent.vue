@@ -59,6 +59,12 @@
   .page-content-inner {
     flex-basis: 20em;
     flex-grow: 1;
+
+    p, li {
+      &:not(.full-width) {
+        max-width: 50em;
+      }
+    }
   }
 
   .page-content-picture-wrapper {
