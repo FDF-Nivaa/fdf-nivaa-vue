@@ -8,6 +8,9 @@ export function createStore(internalName, publicName, publicNamePlural) {
       return { list: [], allFetchedOnce: false }
     },
     getters: {
+      getAll: state => () => {
+        return state.list
+      },
       getById: state => id => {
         return state.list.find(item => item._id === id)
       },

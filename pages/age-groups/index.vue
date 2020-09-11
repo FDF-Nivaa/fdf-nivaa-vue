@@ -35,7 +35,7 @@
     components: { AgeGroupSpan, ChevronRightIcon, ContentList, FancyButton },
     computed: {
       ageGroups() {
-        return this.$store.state['age-groups'].list
+        return this.$store.getters['age-groups/getAll']()
       }
     },
     async fetch({ store }) {

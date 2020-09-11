@@ -2,6 +2,12 @@ export const state = () => ({
   error: { message: '', statusCode: 0 }
 })
 
+export const getters = {
+  getError: state => () => {
+    return state.error
+  }
+}
+
 export const mutations = {
   setError(state, error) {
     state.error = error

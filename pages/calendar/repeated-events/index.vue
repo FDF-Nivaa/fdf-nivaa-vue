@@ -26,7 +26,7 @@
     components: { ChevronRightIcon, ContentList, FancyButton },
     computed: {
       repeatedEvents() {
-        return this.$store.state['repeated-events'].list
+        return this.$store.getters['repeated-events/getAll']()
       }
     },
     async fetch({ store }) {

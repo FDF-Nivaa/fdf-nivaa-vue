@@ -25,7 +25,7 @@
     },
     computed: {
       staff() {
-        return this.$store.state['staff'].list
+        return this.$store.getters['staff/getAll']()
       }
     },
     async fetch({ store }) {

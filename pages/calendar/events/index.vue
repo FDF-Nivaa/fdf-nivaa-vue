@@ -26,7 +26,7 @@
     components: {ChevronRightIcon, ContentList, FancyButton},
     computed: {
       events() {
-        return this.$store.state.events.list
+        return this.$store.getters['events/getAll']()
       }
     },
     async fetch({ store }) {

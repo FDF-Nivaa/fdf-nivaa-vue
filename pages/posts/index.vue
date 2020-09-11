@@ -33,7 +33,7 @@
     components: { ChevronRightIcon, ContentList, FancyButton },
     computed: {
       posts() {
-        return this.$store.state.posts.list
+        return this.$store.getters['posts/getAll']()
       }
     },
     async fetch({ store }) {

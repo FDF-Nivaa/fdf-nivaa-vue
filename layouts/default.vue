@@ -45,10 +45,10 @@
     },
     computed: {
       hasError() {
-        return this.$store.state.error.message || this.$store.state.error.statusCode
+        return this.error.message || this.error.statusCode
       },
       error() {
-        return this.$store.state.error
+        return this.$store.getters['getError']()
       }
     },
     methods: {
