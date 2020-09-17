@@ -54,6 +54,24 @@
     methods: {
       clearErrorMessage() {
         this.$store.dispatch('clearError')
+      },
+      isPreloadSupported() {
+        const relList = document.createElement('link').relList;
+        return !!(relList && relList.supports && relList.supports('preload'));
+      }
+    },
+    mounted() {
+      if (!this.isPreloadSupported()) {
+        document.querySelectorAll('link[rel=preload]').forEach(link => {
+          switch(link.as) {
+            case 'style':
+              link.setAttribute('rel', 'stylesheet')
+              break
+          }
+
+          link.removeAttribute('onload')
+          link.removeAttribute('as')
+        })
       }
     }
   }

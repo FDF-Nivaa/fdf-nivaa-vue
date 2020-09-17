@@ -26,7 +26,12 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,900&display=swap' }
+      {
+        rel: 'preload',
+        as: 'style',
+        href: 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,900&display=swap',
+        onload: 'console.log("font loaded"); this.removeAttribute("as"); this.removeAttribute("onload"); this.rel = "stylesheet"'
+      }
     ]
   },
 
