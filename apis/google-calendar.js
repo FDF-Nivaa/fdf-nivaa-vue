@@ -26,12 +26,14 @@ export function getEvents(calendarId, startDate, endDate, limit) {
     options.maxResults = limit
   }
 
-  const referer = process.client ? location.hostname : req.headers.referer
+  const headers = {}
+
+  if (!process.client) {
+    headers.Referer = req.headers.referer
+  }
 
   return axios
-    .get(buildApiUrl(calendarId, options), {
-      headers: { 'Referer': referer }
-    })
+    .get(buildApiUrl(calendarId, options), { headers })
     .then(response => {
       return response.data.items
     })
