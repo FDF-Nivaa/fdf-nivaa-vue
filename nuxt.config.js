@@ -25,6 +25,8 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
     ],
     link: [
+      { rel: 'preconnect', href: 'https://cockpit.fdfkarlebo.dk' },
+      { rel: 'preconnect', href: 'https://storage.googleapis.com' },
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
       {
         rel: 'preload',
