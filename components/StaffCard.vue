@@ -28,6 +28,7 @@
         v-if="person.photo.path"
         :src="person.photo.path"
         class="staff-card-image"
+        sizes="6em"
       />
     </template>
     <LoadingAnimation v-else />

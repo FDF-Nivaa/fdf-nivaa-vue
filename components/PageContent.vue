@@ -9,6 +9,7 @@
         >
           <CockpitImage
             :src="pageContent.picture.path"
+            sizes="(min-width: 25rem) 25rem, 100vw"
             class="page-content-picture"
           />
         </figure>
