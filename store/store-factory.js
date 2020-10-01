@@ -16,6 +16,9 @@ export function createStore(internalName, publicName, publicNamePlural) {
       },
       getByCustomId: state => id => {
         return state.list.find(item => item.id === id)
+      },
+      getBySlug: state => slug => {
+        return state.list.find(item => item.slug === slug)
       }
     },
     mutations: {
@@ -59,7 +62,7 @@ export function createStore(internalName, publicName, publicNamePlural) {
       async fetchByCustomId({ commit }, id) {
         await cockpitApi.post(internalName, { filter: { id: id } })
           .then(response => {
-            if (response.status === 200) {
+            if (response.status === 200 && response.data.entries.length > 0) {
               commit('setItem', response.data.entries[0])
             } else {
               commit('setError', {

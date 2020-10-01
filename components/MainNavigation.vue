@@ -30,16 +30,38 @@
             </span>
           </nuxt-link>
         </li>
+        <li
+          class="main-navigation-list-item"
+        >
+          <a href="javascript:void(0)" class="main-navigation-link">
+          <MoreHorizontalIcon
+            class="main-navigation-link-icon"
+          />
+          <span class="main-navigation-link-text">
+              Mere
+          </span>
+          </a>
+          <ul class="sub-navigation">
+            <li v-for="menuItem in dynamicMenuItems" :key="menuItem._id" class="sub-navigation-list-item">
+              <nuxt-link
+                class="sub-navigation-link"
+                :to="`/pages/${menuItem.slug}`"
+              >
+                {{menuItem.name}}
+              </nuxt-link>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
 </template>
 
 <script>
-  import {CalendarIcon, CompassIcon, MessageSquareIcon, RepeatIcon, UsersIcon} from 'vue-feather-icons'
+  import {CalendarIcon, CompassIcon, MessageSquareIcon, MoreHorizontalIcon, RepeatIcon, UsersIcon} from 'vue-feather-icons'
 
   export default {
-    components: { CalendarIcon, CompassIcon, MessageSquareIcon, RepeatIcon, UsersIcon },
+    components: { CalendarIcon, CompassIcon, MessageSquareIcon, MoreHorizontalIcon, RepeatIcon, UsersIcon },
     data() {
       return {
         menuItems: [
@@ -65,7 +87,19 @@
           },
         ]
       }
-    }
+    },
+    computed: {
+      dynamicMenuItems() {
+        return this.$store.getters['menu-items/getAll']()
+      }
+    },
+    mounted() {
+      this.$store.dispatch('menu-items/fetchAll')
+    },
+    // TODO This doesn't work — we need another solution
+    async fetch({ store }) {
+      await store.dispatch('menu-items/fetchAll')
+    },
   }
 </script>
 
@@ -186,5 +220,29 @@
   .main-navigation-logo {
     display: block;
     height: 4.25em;
+  }
+
+  .sub-navigation {
+    position: absolute;
+    right: 0;
+    top: 3.4em;
+    list-style: none;
+    padding-left: 0;
+    background: $navigationBackgroundColor;
+    transition: all .2s ease-out;
+  }
+
+  .main-navigation-list-item:not(:hover) > .sub-navigation {
+    pointer-events: none;
+    transform:translateY(-.5em);
+    opacity: 0;
+  }
+
+  .sub-navigation-list-item {
+
+  }
+  .sub-navigation-link {
+    display: block;
+    padding: .5em 1.5em;
   }
 </style>

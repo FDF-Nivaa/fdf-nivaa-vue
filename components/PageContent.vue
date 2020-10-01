@@ -33,16 +33,24 @@
       contentId: {
         type: String,
         required: true
+      },
+      useCustomId: {
+        type: Boolean,
+        default: true
       }
     },
     computed: {
       pageContent() {
-        return this.$store.getters['pages/getByCustomId'](this.contentId)
+        const getter = this.useCustomId ? 'getByCustomId' : 'getById'
+
+        return this.$store.getters[`pages/${getter}`](this.contentId)
       }
     },
     mounted() {
       if (!this.pageContent) {
-        this.$store.dispatch('pages/fetchByCustomId', this.contentId)
+        const action = this.useCustomId ? 'fetchByCustomId' : 'fetchById'
+
+        this.$store.dispatch(`pages/${action}`, this.contentId)
       }
     },
   }

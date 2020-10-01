@@ -18,8 +18,8 @@
 
   export default {
     components: { CockpitImage },
-    data(params) {
-      return { id: params.id, CockpitImageFormat }
+    data() {
+      return { CockpitImageFormat }
     },
     computed: {
       person() {
