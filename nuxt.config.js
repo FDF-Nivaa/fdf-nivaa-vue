@@ -1,9 +1,13 @@
 require('dotenv').config()
 
+const axios = require('axios')
+
 const cockpitToken = process.env.COCKPIT_TOKEN
 const googleCalendarApiKey = process.env.GOOGLE_CALENDAR_API_KEY
 
 module.exports = {
+  telemetry: false,
+
   mode: 'universal',
 
   env: {
@@ -69,10 +73,46 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/feed',
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/style-resources',
   ],
+
+  /*
+  ** Feed
+  */
+  feed: [
+    {
+      path: '/feed.xml',
+      async create(feed) {
+        feed.options = {
+          title: 'FDF Nivå',
+          link: 'https://fdfnivå.dk/feed.xml',
+          description: 'De sidste nye opslag fra FDF Nivå'
+        }
+
+        const posts = await axios.get(`https://cockpit.fdfkarlebo.dk/api/collections/get/posts?token=${cockpitToken}`)
+          .then(response => response.data.entries)
+
+        posts.sort((a, b) => b._created - a._created)
+
+        posts.forEach(post => {
+          feed.addItem({
+            title: post.title,
+            id: post._id,
+            link: `https://fdfnivå.dk/posts/${post._id}`,
+            description: post.intro,
+            content: `<p>${post.intro}</p>${post.content}`
+          })
+        })
+      },
+      cacheTime: 1000 * 60 * 15, // 15 minutes
+      type: 'rss2', // Can be: rss2, atom1, json1
+    }
+  ],
+
+
   /*
   ** Axios module configuration
   */
