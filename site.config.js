@@ -20,6 +20,12 @@ export default {
       "id": "coufvnfppmc4kptde0q3fc8550@group.calendar.google.com"
     },
     {
+      "name": "Familie",
+      "ageGroupId": "613cb808396361f77000006f",
+      "className": "familie",
+      "id": "qgav6kaoanimog1s6o5cr2t0s8@group.calendar.google.com"
+    },
+    {
       "name": "Puslinge & Tumlinge",
       "ageGroupId": "5e2c626a396361ed3f000084",
       "className": "tumlinge",
