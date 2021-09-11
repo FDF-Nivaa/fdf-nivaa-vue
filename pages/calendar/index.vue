@@ -19,9 +19,6 @@ export default {
     const startDate = new Date();
     const endDate = new Date();
 
-    // TODO Clean up debug data
-    startDate.setDate(startDate.getDate() - 1);
-
     endDate.setFullYear(endDate.getFullYear() + 1);
 
     return {
