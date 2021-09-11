@@ -17,7 +17,7 @@
     </h3>
     <LoadingAnimation v-if="isLoading" />
     <template v-else>
-      <h4 class="event-name">{{event.summary}}</h4>
+      <h4 class="event-name" :title="event.summary">{{event.summary}}</h4>
       <p class="event-date">{{formatDateSpan(event.parsedDates.startDate, event.parsedDates.endDate,
         event.parsedDates.displayTimeOfDay)}}</p>
     </template>
