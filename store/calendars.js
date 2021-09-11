@@ -53,7 +53,7 @@ export const getters = {
     return state.calendars[id] && state.calendars[id].events[0] || null
   },
   isCalendarLoading: state => id => {
-    return state.calendars[id] && state.calendars[id].isLoading
+    return !state.calendars[id] || state.calendars[id] && state.calendars[id].isLoading
   }
 }
 

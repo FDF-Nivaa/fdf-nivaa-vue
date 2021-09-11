@@ -1,5 +1,5 @@
 <template>
-  <CalendarEvent :calendar="calendar" :event="event" :is-loading="isLoading" />
+  <CalendarEvent v-if="event || isLoading" :calendar="calendar" :event="event" :is-loading="isLoading" />
 </template>
 
 <script>
@@ -30,7 +30,7 @@
         return this.$store.getters['calendars/getNextEventForCalendar'](this.calendar.id)
       },
       isLoading() {
-        return this.$store.getters['calendars/isCalendarLoading'](this.calendar.id) || !this.event
+        return this.$store.getters['calendars/isCalendarLoading'](this.calendar.id)
       },
     },
     mounted() {
