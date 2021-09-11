@@ -125,11 +125,9 @@ module.exports = {
   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-
-    }
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}, // eslint-disable-line
   },
 
   buildModules: [
