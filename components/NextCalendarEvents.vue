@@ -26,8 +26,10 @@
 >
   .next-calendar-events {
     display: grid;
+    margin: auto;
+    max-width: 60em;
     grid-gap: 1em;
-    grid-template-columns: repeat(3, minmax(5em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
     list-style: none;
     padding: 0;
   }
