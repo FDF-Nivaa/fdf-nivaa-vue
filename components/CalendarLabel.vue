@@ -2,45 +2,45 @@
   <span
     class="calendar-label"
     :class="calendar.className"
-    :style="{'--calendar-color': ageGroup ? ageGroup.color : null}"
-  >{{calendar.name}}</span>
+    :style="{ '--calendar-color': ageGroup ? ageGroup.color : null }"
+    >{{ calendar.name }}</span
+  >
 </template>
 
 <script>
-  export default {
-    name: 'CalendarLabel',
-    props: {
-      calendar: {
-        type: Object,
-        required: true,
-        validator(calendar) {
-          return calendar.name
-        }
-      }
+export default {
+  name: 'CalendarLabel',
+  props: {
+    calendar: {
+      type: Object,
+      required: true,
+      validator(calendar) {
+        return calendar.name
+      },
     },
-    computed: {
-      ageGroup() {
-        if (this.calendar.ageGroupId) {
-          return this.$store.getters['age-groups/getById'](this.calendar.ageGroupId)
-        }
-
-        return null
+  },
+  computed: {
+    ageGroup() {
+      if (this.calendar.ageGroupId) {
+        return this.$store.getters['age-groups/getById'](
+          this.calendar.ageGroupId
+        )
       }
-    }
-  }
+
+      return null
+    },
+  },
+}
 </script>
 
-<style
-  lang="scss"
-  scoped
->
-  .calendar-label {
-    --calendar-color: #{$nightBlue};
+<style lang="scss" scoped>
+.calendar-label {
+  --calendar-color: #{$nightBlue};
 
-    background: var(--calendar-color, $nightBlue);
-    color: white;
-    border-radius: .2rem;
-    padding: .25em .5em;
-    font-size: .75em;
-  }
+  background: var(--calendar-color, $nightBlue);
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0.25em 0.5em;
+  font-size: 0.75em;
+}
 </style>

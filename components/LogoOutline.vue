@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  export default {
-    name: 'LogoOutline'
-  }
+export default {
+  name: 'LogoOutline',
+}
 </script>

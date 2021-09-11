@@ -5,6 +5,7 @@ const app = express()
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
+
 config.dev = !(process.env.NODE_ENV === 'production')
 
 async function start() {
@@ -13,12 +14,13 @@ async function start() {
 
   const {
     host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3000
+    port = process.env.PORT || 3000,
   } = nuxt.options.server
 
   // Build only in dev mode
   if (config.dev) {
     const builder = new Builder(nuxt)
+
     await builder.build()
   }
 
@@ -29,7 +31,8 @@ async function start() {
   app.listen(port, host)
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
-    badge: true
+    badge: true,
   })
 }
+
 start()

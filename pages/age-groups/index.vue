@@ -2,20 +2,18 @@
   <article>
     <h1>Aldersgrupper</h1>
     <ContentList :items="ageGroups">
-      <template #default="{item: group}">
+      <template #default="{ item: group }">
         <h2>
           <nuxt-link :to="'/age-groups/' + group._id">
-            {{group.title}}
+            {{ group.title }}
           </nuxt-link>
         </h2>
         <p v-if="group.minAge || group.maxAge">
-          <AgeGroupSpan
-            :min="group.minAge"
-            :max="group.maxAge"
-          />
+          <AgeGroupSpan :min="group.minAge" :max="group.maxAge" />
         </p>
         <p v-if="group.intro || group.description">
-          <FancyButton :to="`/age-groups/${group._id}`">Læs mere om {{group.title}}
+          <FancyButton :to="`/age-groups/${group._id}`"
+            >Læs mere om {{ group.title }}
             <ChevronRightIcon />
           </FancyButton>
         </p>
@@ -25,22 +23,21 @@
 </template>
 
 <script>
-  import AgeGroupSpan from '../../components/AgeGroupSpan'
-  import {ChevronRightIcon} from 'vue-feather-icons'
-  import ContentList from "../../components/ContentList"
-  import FancyButton from "../../components/FancyButton"
+import AgeGroupSpan from '../../components/AgeGroupSpan'
+import { ChevronRightIcon } from 'vue-feather-icons'
+import ContentList from '../../components/ContentList'
+import FancyButton from '../../components/FancyButton'
 
-  export default {
-    name: 'age-groups.index',
-    components: { AgeGroupSpan, ChevronRightIcon, ContentList, FancyButton },
-    computed: {
-      ageGroups() {
-        return this.$store.getters['age-groups/getAll']()
-      }
+export default {
+  components: { AgeGroupSpan, ChevronRightIcon, ContentList, FancyButton },
+  async fetch({ store }) {
+    store.dispatch('clearError')
+    await store.dispatch('age-groups/fetchAll')
+  },
+  computed: {
+    ageGroups() {
+      return this.$store.getters['age-groups/getAll']()
     },
-    async fetch({ store }) {
-      store.dispatch('clearError')
-      await store.dispatch('age-groups/fetchAll')
-    },
-  }
+  },
+}
 </script>

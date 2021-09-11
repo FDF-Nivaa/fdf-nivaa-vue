@@ -41,21 +41,21 @@
 </template>
 
 <script>
-import CalendarLabel from "./CalendarLabel";
-import LoadingAnimation from "./LoadingAnimation";
+import CalendarLabel from './CalendarLabel'
+import LoadingAnimation from './LoadingAnimation'
 
-import { formatDateSpan } from "../utils/format";
-import DateSpan from "./DateSpan";
+import { formatDateSpan } from '../utils/format'
+import DateSpan from './DateSpan'
 
 export default {
-  name: "BigCalendar",
+  name: 'BigCalendar',
   components: { DateSpan, CalendarLabel, LoadingAnimation },
   props: {
     calendars: {
       type: Array,
       required: true,
       validator(arr) {
-        return !arr.some((val) => !val.id);
+        return !arr.some((val) => !val.id)
       },
     },
     startDate: {
@@ -70,26 +70,26 @@ export default {
     },
   },
   data() {
-    return { events: [], isLoading: true };
+    return { events: [], isLoading: true }
   },
   computed: {
     sortedEvents() {
-      return this.$store.getters["calendars/getAllEvents"]();
+      return this.$store.getters['calendars/getAllEvents']()
     },
   },
   mounted() {
-    this.$store.dispatch("age-groups/fetchAllOnce");
+    this.$store.dispatch('age-groups/fetchAllOnce')
     this.$store
-      .dispatch("calendars/fetchAll", {
+      .dispatch('calendars/fetchAll', {
         startDate: this.startDate,
         endDate: this.endDate,
       })
-      .finally(() => (this.isLoading = false));
+      .finally(() => (this.isLoading = false))
   },
   methods: {
     formatDateSpan,
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

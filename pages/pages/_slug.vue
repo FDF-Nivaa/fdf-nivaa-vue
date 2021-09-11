@@ -4,18 +4,20 @@
 </template>
 
 <script>
-  import PageContent from "../../components/PageContent"
-  import LoadingAnimation from "../../components/LoadingAnimation"
+import PageContent from '../../components/PageContent'
+import LoadingAnimation from '../../components/LoadingAnimation'
 
-  export default {
-    components: { LoadingAnimation, PageContent },
-    computed: {
-      menuItem() {
-        return this.$store.getters['menu-items/getBySlug'](this.$route.params.slug)
-      },
-      pageId() {
-        return this.menuItem?.page._id
-      }
-    }
-  }
+export default {
+  components: { LoadingAnimation, PageContent },
+  computed: {
+    menuItem() {
+      return this.$store.getters['menu-items/getBySlug'](
+        this.$route.params.slug
+      )
+    },
+    pageId() {
+      return this.menuItem?.page._id
+    },
+  },
+}
 </script>

@@ -1,4 +1,5 @@
 const axios = require('axios')
+
 import config from '~/site.config'
 
 export function createCollectionUrl(collection) {
@@ -13,7 +14,11 @@ export default class CockpitApi {
   }
 
   post(collection, data, config) {
-    return this.axiosInstance.post(createCollectionUrl(collection), data, config)
+    return this.axiosInstance.post(
+      createCollectionUrl(collection),
+      data,
+      config
+    )
   }
 
   get axiosInstance() {

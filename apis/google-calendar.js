@@ -1,9 +1,10 @@
-import queryString from "query-string"
+import queryString from 'query-string'
 
 import axios from 'axios'
 import config from '~/site.config'
 
 const apiKey = process.env.googleCalendarApiKey
+
 export const calendars = config.googleCalendars
 
 export function getEvents(calendarId, startDate, endDate, limit) {
@@ -14,12 +15,10 @@ export function getEvents(calendarId, startDate, endDate, limit) {
 
   if (startDate) {
     options.timeMin = startDate.toISOString()
-
   }
 
   if (endDate) {
     options.timeMax = endDate.toISOString()
-
   }
 
   if (limit) {
@@ -28,13 +27,16 @@ export function getEvents(calendarId, startDate, endDate, limit) {
 
   const headers = {}
 
+  // The following makes ESLint angry and doesn't seem to be in use at the moment
+  /*
   if (!process.client) {
     headers.Referer = req.headers.referer
   }
+  */
 
   return axios
     .get(buildApiUrl(calendarId, options), { headers })
-    .then(response => {
+    .then((response) => {
       return response.data.items
     })
 }
@@ -71,7 +73,5 @@ function buildApiUrl(calendarId, options) {
     key: apiKey,
   })
 
-  return (
-    `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${parameters}`
-  )
+  return `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${parameters}`
 }

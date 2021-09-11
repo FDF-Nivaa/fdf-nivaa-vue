@@ -2,47 +2,56 @@
   <li
     class="calendar-event"
     :class="calendar.className"
-    :style="{'--calendar-color': ageGroup ? ageGroup.color : null}"
+    :style="{ '--calendar-color': ageGroup ? ageGroup.color : null }"
   >
     <h3 class="calendar-name">
-      {{calendar.name}}
-      <br>
-      <template v-if="isLoading && !ageGroup">
-        -
-      </template>
-      <AgeGroupSpan v-else-if="ageGroup" :min="ageGroup.minAge" :max="ageGroup.maxAge"/>
-      <template v-else>
-        Alle aldre
-      </template>
+      {{ calendar.name }}
+      <br />
+      <template v-if="isLoading && !ageGroup"> - </template>
+      <AgeGroupSpan
+        v-else-if="ageGroup"
+        :min="ageGroup.minAge"
+        :max="ageGroup.maxAge"
+      />
+      <template v-else> Alle aldre </template>
     </h3>
     <LoadingAnimation v-if="isLoading" />
     <template v-else>
-      <h4 class="event-name" :title="event.summary">{{event.summary}}</h4>
-      <p class="event-date">{{formatDateSpan(event.parsedDates.startDate, event.parsedDates.endDate,
-        event.parsedDates.displayTimeOfDay)}}</p>
+      <h4 class="event-name" :title="event.summary">{{ event.summary }}</h4>
+      <p class="event-date">
+        {{
+          formatDateSpan(
+            event.parsedDates.startDate,
+            event.parsedDates.endDate,
+            event.parsedDates.displayTimeOfDay
+          )
+        }}
+      </p>
     </template>
   </li>
 </template>
 
 <script>
-import AgeGroupSpan from "./AgeGroupSpan"
-import LoadingAnimation from "./LoadingAnimation"
-import {formatDateSpan} from "../utils/format"
+import AgeGroupSpan from './AgeGroupSpan'
+import LoadingAnimation from './LoadingAnimation'
+import { formatDateSpan } from '../utils/format'
 
 export default {
   name: 'CalendarEvent',
-  components: {AgeGroupSpan, LoadingAnimation},
+  components: { AgeGroupSpan, LoadingAnimation },
   props: {
     calendar: {
       type: Object,
+      default: null,
     },
     event: {
       type: Object,
+      default: null,
     },
     isLoading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     /*
@@ -55,20 +64,19 @@ export default {
      */
     ageGroup() {
       if (this.calendar && this.calendar.ageGroupId) {
-        return this.$store.getters['age-groups/getById'](this.calendar.ageGroupId)
+        return this.$store.getters['age-groups/getById'](
+          this.calendar.ageGroupId
+        )
       }
 
       return null
-    }
+    },
   },
   methods: { formatDateSpan },
 }
 </script>
 
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 .calendar-event {
   --calendar-color: #{$nightBlue};
 
@@ -77,7 +85,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   margin: 0;
-  padding: .75em .8em 0;
+  padding: 0.75em 0.8em 0;
   border-radius: $defaultBorderRadius;
   background: $navigationBackgroundColor;
   box-shadow: $defaultBoxShadow;
@@ -99,18 +107,19 @@ export default {
 
 .calendar-name {
   order: 1;
-  margin: .75em -1.1em 0;
-  padding: .5em;
-  font-size: .75em;
+  margin: 0.75em -1.1em 0;
+  padding: 0.5em;
+  font-size: 0.75em;
   color: white;
-  background: var(--calendar-color, $nightBlue) linear-gradient(-45deg, $duskBlue -150%, transparent);
+  background: var(--calendar-color, $nightBlue)
+    linear-gradient(-45deg, $duskBlue -150%, transparent);
   border-bottom-left-radius: $defaultBorderRadius;
   border-bottom-right-radius: $defaultBorderRadius;
   transition: background-color 1s ease-out;
 }
 
 p {
-  font-size: .75em;
-  margin: .5em 0;
+  font-size: 0.75em;
+  margin: 0.5em 0;
 }
 </style>

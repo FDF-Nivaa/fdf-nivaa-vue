@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import format from "date-fns/format";
-import { formatDateSpanAsObject } from "../utils/format";
+import format from 'date-fns/format'
+import { formatDateSpanAsObject } from '../utils/format'
 
 export default {
-  name: "DateSpan",
+  name: 'DateSpan',
   props: {
     startDate: {
       type: Date,
@@ -33,7 +33,7 @@ export default {
     },
   },
   data() {
-    return { microDataDateFormat: "Y-MM-dd'T'HH:ii:ss" };
+    return { microDataDateFormat: "Y-MM-dd'T'HH:ii:ss" }
   },
   computed: {
     formattedDates() {
@@ -41,14 +41,14 @@ export default {
         this.startDate,
         this.endDate,
         this.includeTime
-      );
+      )
     },
     microDataStartDate() {
-      return format(this.startDate, this.microDataDateFormat);
+      return format(this.startDate, this.microDataDateFormat)
     },
     microDataEndDate() {
-      return format(this.endDate, this.microDataDateFormat);
+      return format(this.endDate, this.microDataDateFormat)
     },
   },
-};
+}
 </script>

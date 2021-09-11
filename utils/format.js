@@ -1,7 +1,7 @@
-import format from "date-fns/format";
-import daLocale from "date-fns/locale/da";
+import format from 'date-fns/format'
+import daLocale from 'date-fns/locale/da'
 
-const globalFormattingOptions = { locale: daLocale };
+const globalFormattingOptions = { locale: daLocale }
 
 /**
  * Formats the given date in a human readable way.
@@ -10,17 +10,17 @@ const globalFormattingOptions = { locale: daLocale };
  * @return {string}
  */
 export function formatDate(date, includeTime) {
-  let outputFormat = "do MMMM";
+  let outputFormat = 'do MMMM'
 
   if (!isCurrentYear(date)) {
-    outputFormat += " y";
+    outputFormat += ' y'
   }
 
   if (includeTime) {
-    outputFormat += ` 'kl.' k:mm`;
+    outputFormat += ` 'kl.' k:mm`
   }
 
-  return format(date, outputFormat, globalFormattingOptions);
+  return format(date, outputFormat, globalFormattingOptions)
 }
 
 /**
@@ -31,60 +31,60 @@ export function formatDate(date, includeTime) {
  * @return {string}
  */
 export function formatDateSpan(date1, date2, includeTime) {
-  const dates = formatDateSpanAsObject(date1, date2, includeTime);
-  const output = [dates.start];
+  const dates = formatDateSpanAsObject(date1, date2, includeTime)
+  const output = [dates.start]
 
   if (dates.end) {
-    output.push("-");
-    output.push(dates.end);
+    output.push('-')
+    output.push(dates.end)
   }
 
-  return output.join(" ");
+  return output.join(' ')
 }
 
 export function formatDateSpanAsObject(startDate, endDate, includeTime) {
-  let outputFormatStart = "do";
-  let outputFormatEnd = "do MMMM";
+  let outputFormatStart = 'do'
+  let outputFormatEnd = 'do MMMM'
 
   if (includeTime) {
-    outputFormatStart = outputFormatEnd;
+    outputFormatStart = outputFormatEnd
   }
 
   if (isSameYear(startDate, endDate)) {
     if (!isCurrentYear(endDate)) {
       if (isSameDay(startDate, endDate)) {
-        outputFormatStart += " y";
+        outputFormatStart += ' y'
       } else {
-        outputFormatEnd += " y";
+        outputFormatEnd += ' y'
       }
     }
   } else {
-    outputFormatStart += " y";
-    outputFormatEnd += " y";
+    outputFormatStart += ' y'
+    outputFormatEnd += ' y'
   }
 
   if (includeTime) {
-    outputFormatStart += ` 'kl.' k:mm`;
-    outputFormatEnd += ` 'kl.' k:mm`;
+    outputFormatStart += ` 'kl.' k:mm`
+    outputFormatEnd += ` 'kl.' k:mm`
   }
 
   let startDateFormatted = [
     format(startDate, outputFormatStart, globalFormattingOptions),
-  ];
-  let endDateFormatted = [];
+  ]
+  let endDateFormatted = []
 
   if (isSameDay(startDate, endDate)) {
-    endDateFormatted.push(format(endDate, "k:mm", globalFormattingOptions));
+    endDateFormatted.push(format(endDate, 'k:mm', globalFormattingOptions))
   } else {
     endDateFormatted.push(
       format(endDate, outputFormatEnd, globalFormattingOptions)
-    );
+    )
   }
 
   return {
-    start: startDateFormatted.join(" "),
-    end: endDateFormatted.join(" "),
-  };
+    start: startDateFormatted.join(' '),
+    end: endDateFormatted.join(' '),
+  }
 }
 
 /**
@@ -93,7 +93,7 @@ export function formatDateSpanAsObject(startDate, endDate, includeTime) {
  * @return {boolean}
  */
 export function isCurrentYear(date) {
-  return date.getFullYear() === new Date().getFullYear();
+  return date.getFullYear() === new Date().getFullYear()
 }
 
 /**
@@ -103,7 +103,7 @@ export function isCurrentYear(date) {
  * @return {boolean}
  */
 export function isSameYear(date1, date2) {
-  return date1.getFullYear() === date2.getFullYear();
+  return date1.getFullYear() === date2.getFullYear()
 }
 
 /**
@@ -113,7 +113,7 @@ export function isSameYear(date1, date2) {
  * @return {boolean}
  */
 export function isSameMonth(date1, date2) {
-  return date1.getMonth() === date2.getMonth();
+  return date1.getMonth() === date2.getMonth()
 }
 
 /**
@@ -123,7 +123,7 @@ export function isSameMonth(date1, date2) {
  * @return {boolean}
  */
 export function isSameDate(date1, date2) {
-  return date1.getDate() === date2.getDate();
+  return date1.getDate() === date2.getDate()
 }
 
 /**
@@ -137,5 +137,5 @@ export function isSameDay(date1, date2) {
     isSameYear(date1, date2) &&
     isSameMonth(date1, date2) &&
     isSameDate(date1, date2)
-  );
+  )
 }

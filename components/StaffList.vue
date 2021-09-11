@@ -5,83 +5,78 @@
       :key="person.id"
       class="staff-list-item"
     >
-      <StaffCard
-        :staff-id="person.id"
-        :label="person.label"
-      />
+      <StaffCard :staff-id="person.id" :label="person.label" />
     </li>
   </ul>
 </template>
 
 <script>
-  import StaffCard from "./StaffCard"
+import StaffCard from './StaffCard'
 
-  export default {
-    name: 'StaffList',
-    components: { StaffCard },
-    props: {
-      staff: {
-        type: Array,
-        required: true
-      },
-      primaryStaff: {
-        type: Object,
-        required: false
-      }
+export default {
+  name: 'StaffList',
+  components: { StaffCard },
+  props: {
+    staff: {
+      type: Array,
+      required: true,
     },
-    computed: {
-      primaryStaffId() {
-        return this.primaryStaff && this.primaryStaff._id
-      },
-      combinedStaff() {
-        if (this.primaryStaff) {
-          return [
-            this.primaryStaff,
-            ...this.staff.filter(person => person._id !== this.primaryStaffId)
-          ]
-        }
-
-        return this.staff
-      },
-      processedStaff() {
-        return this.combinedStaff.map(person => ({
-          id: person._id,
-          label: person._id === this.primaryStaffId ? 'Kontaktperson' : undefined
-        }))
+    primaryStaff: {
+      type: Object,
+      required: false,
+      default: null,
+    },
+  },
+  computed: {
+    primaryStaffId() {
+      return this.primaryStaff && this.primaryStaff._id
+    },
+    combinedStaff() {
+      if (this.primaryStaff) {
+        return [
+          this.primaryStaff,
+          ...this.staff.filter((person) => person._id !== this.primaryStaffId),
+        ]
       }
-    }
-  }
+
+      return this.staff
+    },
+    processedStaff() {
+      return this.combinedStaff.map((person) => ({
+        id: person._id,
+        label: person._id === this.primaryStaffId ? 'Kontaktperson' : undefined,
+      }))
+    },
+  },
+}
 </script>
 
-<style
-  lang="scss"
-  scoped
->
-  .staff-list {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 20em);
-    grid-gap: 1.5em;
-    padding: 0;
-    list-style: none;
+<style lang="scss" scoped>
+.staff-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20em);
+  grid-gap: 1.5em;
+  padding: 0;
+  list-style: none;
 
-    @media (max-width: $largePhone) {
-      grid-template-columns: 1fr;
-    }
-    @media (max-width: $smallPhone) {
-      font-size: .8125em;
-    }
+  @media (max-width: $largePhone) {
+    grid-template-columns: 1fr;
   }
-
-  .staff-list-item {
-    margin: 0;
+  @media (max-width: $smallPhone) {
+    font-size: 0.8125em;
   }
+}
 
-  .staff-card {
-    width: 100%;
+.staff-list-item {
+  margin: 0;
+}
 
-    @media (min-width: $largePhone) {
-      max-width: 20em;
-    }
+.staff-card {
+  width: 100%;
+
+  @media (min-width: $largePhone) {
+    max-width: 20em;
   }
+}
 </style>
