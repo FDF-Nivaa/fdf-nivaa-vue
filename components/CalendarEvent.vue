@@ -118,6 +118,10 @@ export default {
   transition: background-color 1s ease-out;
 }
 
+.event-name {
+  margin: 0.15em;
+}
+
 p {
   font-size: 0.75em;
   margin: 0.5em 0;
