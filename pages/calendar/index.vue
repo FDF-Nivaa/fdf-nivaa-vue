@@ -10,22 +10,25 @@
 </template>
 
 <script>
-  import BigCalendar from "../../components/BigCalendar"
-  import siteConfig from '../../site.config'
+import BigCalendar from "../../components/BigCalendar";
+import siteConfig from "../../site.config";
 
-  export default {
-    components: { BigCalendar },
-    data() {
-      const startDate = new Date()
-      const endDate = new Date()
+export default {
+  components: { BigCalendar },
+  data() {
+    const startDate = new Date();
+    const endDate = new Date();
 
-      endDate.setFullYear(endDate.getFullYear() + 1)
+    // TODO Clean up debug data
+    startDate.setDate(startDate.getDate() - 1);
 
-      return {
-        calendars: siteConfig.googleCalendars,
-        startDate,
-        endDate,
-      }
-    }
-  }
+    endDate.setFullYear(endDate.getFullYear() + 1);
+
+    return {
+      calendars: siteConfig.googleCalendars,
+      startDate,
+      endDate,
+    };
+  },
+};
 </script>

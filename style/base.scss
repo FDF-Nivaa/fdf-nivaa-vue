@@ -54,13 +54,15 @@ h3 {
   font-weight: $fontWeightSemiBold;
 }
 
-p {
+h4,
+p,
+ul,
+ol {
   margin: 1em 0;
 }
 
 ul,
 ol {
-  margin: 1em 0;
   padding-left: 1.5em;
 }
 
