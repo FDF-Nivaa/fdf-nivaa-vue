@@ -106,6 +106,12 @@ export default {
 .filter-button {
   transition: all 0.15s ease-out;
 
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 0.1em 0.5em -0.2em rgba(0, 0, 0, 0.5);
+    }
+  }
+
   &:not(:first-child) {
     margin-left: 0.3em;
   }
