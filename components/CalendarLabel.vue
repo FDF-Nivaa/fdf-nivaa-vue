@@ -1,9 +1,11 @@
 <template>
-  <span
+  <component
+    :is="tagName"
     class="calendar-label"
     :class="calendar.className"
     :style="{ '--calendar-color': ageGroup ? ageGroup.color : null }"
-    >{{ calendar.name }}</span
+    @click="$emit('click', $event)"
+    >{{ calendar.name }}</component
   >
 </template>
 
@@ -17,6 +19,10 @@ export default {
       validator(calendar) {
         return calendar.name
       },
+    },
+    tagName: {
+      type: String,
+      default: 'span',
     },
   },
   computed: {

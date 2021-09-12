@@ -2,7 +2,7 @@
   <LoadingAnimation v-if="isLoading" size="large" />
   <ol v-else class="calendar-list">
     <li
-      v-for="event in sortedEvents"
+      v-for="event in filteredEvents"
       :key="event.id"
       class="calendar-list-item"
       itemscope
@@ -44,7 +44,6 @@
 import CalendarLabel from './CalendarLabel'
 import LoadingAnimation from './LoadingAnimation'
 
-import { formatDateSpan } from '../utils/format'
 import DateSpan from './DateSpan'
 
 export default {
@@ -52,6 +51,13 @@ export default {
   components: { DateSpan, CalendarLabel, LoadingAnimation },
   props: {
     calendars: {
+      type: Array,
+      required: true,
+      validator(arr) {
+        return !arr.some((val) => !val.id)
+      },
+    },
+    filteredCalendars: {
       type: Array,
       required: true,
       validator(arr) {
@@ -76,6 +82,11 @@ export default {
     sortedEvents() {
       return this.$store.getters['calendars/getAllEvents']()
     },
+    filteredEvents() {
+      return this.sortedEvents.filter((event) =>
+        this.isCalendarInFilter(event.calendar)
+      )
+    },
   },
   mounted() {
     this.$store.dispatch('age-groups/fetchAllOnce')
@@ -87,7 +98,9 @@ export default {
       .finally(() => (this.isLoading = false))
   },
   methods: {
-    formatDateSpan,
+    isCalendarInFilter(calendar) {
+      return this.filteredCalendars.includes(calendar)
+    },
   },
 }
 </script>

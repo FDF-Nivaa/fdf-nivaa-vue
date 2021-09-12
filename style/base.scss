@@ -75,7 +75,10 @@ a {
 }
 
 button {
+  border: none;
+  font-family: inherit;
   font-size: 1em;
+  cursor: pointer;
 }
 
 strong {
