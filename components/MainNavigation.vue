@@ -17,11 +17,18 @@
             </span>
           </nuxt-link>
         </li>
-        <li class="main-navigation-list-item">
-          <a href="javascript:void(0)" class="main-navigation-link">
+        <li
+          class="main-navigation-list-item"
+          :class="{ expanded: expandDynamicMenuItems }"
+        >
+          <button
+            type="button"
+            class="main-navigation-link"
+            @click="toggleExpandDynamicMenuItems"
+          >
             <MoreHorizontalIcon class="main-navigation-link-icon" />
             <span class="main-navigation-link-text"> Mere </span>
-          </a>
+          </button>
           <ul class="sub-navigation">
             <li
               v-for="menuItem in dynamicMenuItems"
@@ -63,6 +70,7 @@ export default {
   },
   data() {
     return {
+      expandDynamicMenuItems: false,
       menuItems: [
         {
           title: 'Opslag',
@@ -98,6 +106,12 @@ export default {
   },
   mounted() {
     this.$store.dispatch('menu-items/fetchAll')
+  },
+  methods: {
+    toggleExpandDynamicMenuItems(expand) {
+      this.expandDynamicMenuItems =
+        typeof expand === 'boolean' ? expand : !this.expandDynamicMenuItems
+    },
   },
 }
 </script>
@@ -216,6 +230,7 @@ export default {
 .main-navigation-logo {
   display: block;
   height: 4.25em;
+  aspect-ratio: 229/363;
 }
 
 .sub-navigation {
@@ -226,12 +241,21 @@ export default {
   padding-left: 0;
   background: $navigationBackgroundColor;
   transition: all 0.2s ease-out;
+
+  @media (max-width: $largePhone) {
+    top: auto;
+    bottom: 4.5em;
+  }
 }
 
-.main-navigation-list-item:not(:hover) > .sub-navigation {
+.main-navigation-list-item:not(.expanded) > .sub-navigation {
   pointer-events: none;
   transform: translateY(-0.5em);
   opacity: 0;
+
+  @media (max-width: $largePhone) {
+    transform: translateY(0.5em);
+  }
 }
 
 .sub-navigation-list-item {
