@@ -8,7 +8,7 @@ const googleCalendarApiKey = process.env.GOOGLE_CALENDAR_API_KEY
 module.exports = {
   telemetry: false,
 
-  mode: 'universal',
+  target: 'static',
 
   env: {
     cockpitToken,

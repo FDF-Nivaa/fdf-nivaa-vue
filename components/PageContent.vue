@@ -2,6 +2,7 @@
   <article class="page-content">
     <template v-if="pageContent">
       <h1>{{ pageContent.title }}</h1>
+      <p v-if="pageContent.intro" class="page-intro">{{ pageContent.intro }}</p>
       <div class="page-content-wrapper">
         <figure
           v-if="pageContent.picture.path"
@@ -54,6 +55,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page-content {
+  max-width: 50em;
+  margin: auto;
+}
+
+.page-intro {
+  margin: 1em 0;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
 .page-content-wrapper {
   display: flex;
   flex-direction: row-reverse;
@@ -63,10 +75,12 @@ export default {
   flex-basis: 20em;
   flex-grow: 1;
 
-  p,
-  li {
-    &:not(.full-width) {
-      max-width: 50em;
+  ::v-deep {
+    p,
+    li {
+      &:not(.full-width) {
+        max-width: 40em;
+      }
     }
   }
 }

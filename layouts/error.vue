@@ -73,7 +73,7 @@ export default {
 .error-illustration {
   display: block;
   width: 18em;
-  max-width: 80%;
+  max-width: unquote('min(80%, 40vh)');
   margin: 3em auto 0;
   aspect-ratio: 600/708;
   //height: 118%; // Forces the height to match the correct aspect ratio to prevent layout reflow when the image is loaded
