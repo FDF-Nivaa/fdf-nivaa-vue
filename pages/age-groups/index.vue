@@ -8,9 +8,7 @@
             {{ group.title }}
           </nuxt-link>
         </h2>
-        <p v-if="group.minAge || group.maxAge">
-          <AgeGroupSpan :min="group.minAge" :max="group.maxAge" />
-        </p>
+        <AgeGroupMeta :age-group="group" :heading-size="3" />
         <p v-if="group.intro || group.description">
           <FancyButton :to="`/age-groups/${group._id}`"
             >Læs mere om {{ group.title }}
@@ -23,13 +21,13 @@
 </template>
 
 <script>
-import AgeGroupSpan from '../../components/AgeGroupSpan'
+import AgeGroupMeta from '../../components/AgeGroupMeta'
 import { ChevronRightIcon } from 'vue-feather-icons'
 import ContentList from '../../components/ContentList'
 import FancyButton from '../../components/FancyButton'
 
 export default {
-  components: { AgeGroupSpan, ChevronRightIcon, ContentList, FancyButton },
+  components: { AgeGroupMeta, ChevronRightIcon, ContentList, FancyButton },
   async fetch({ store }) {
     store.dispatch('clearError')
     await store.dispatch('age-groups/fetchAll')
