@@ -45,6 +45,6 @@
     "query-string": "^6.9.0",
     "sass-loader": "^10.2.0",
     "vue-feather-icons": "^4.22.0",
-    "vue-jest": "^3.0.2"
+    "vue-jest": "^4.0.1"
   }
 }
